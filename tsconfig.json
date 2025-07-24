@@ -26,6 +26,15 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/tina/*": [
+        "./tina/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
       ]
     },
     "strictNullChecks": true

@@ -2,12 +2,12 @@
 import {
   PageBlocksFeatures,
   PageBlocksFeaturesItems,
-} from "../../tina/__generated__/types";
+} from "@/tina/__generated__/types";
 import type { Template } from 'tinacms';
 import { tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { Icon } from "../icon";
-import { iconSchema } from "../../tina/fields/icon";
+import { Icon } from "@/components/icon";
+import { iconSchema } from "@/tina/fields/icon";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Section } from "../layout/section";
 import { sectionBlockSchemaField } from '../layout/section';

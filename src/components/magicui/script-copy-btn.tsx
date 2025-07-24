@@ -9,7 +9,7 @@ import { HTMLAttributes, useEffect, useState } from "react";
 import type { Template } from "tinacms";
 
 interface ScriptCopyBtnProps extends HTMLAttributes<HTMLDivElement> {
-  showMultiplePackageOptions?: boolean;
+  showMultiplePackageOptions?: boolean; 
   codeLanguage: string;
   lightTheme: string;
   darkTheme: string;

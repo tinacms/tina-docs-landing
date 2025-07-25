@@ -27,3 +27,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .tina/__generated__
+
+#sitemaps
+/public/sitemap.xml
+/public/sitemap-0.xml

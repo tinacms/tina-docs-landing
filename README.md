@@ -1,107 +1,163 @@
-# Tina Starter 🦙
+# 🚀 TinaDocs - Your Complete Documentation Solution
 
-![tina-cloud-starter-demo](https://user-images.githubusercontent.com/103008/130587027-995ccc45-a852-4f90-b658-13e8e0517339.gif)
+> **Modern documentation made simple and powerful**
 
-This Next.js starter is powered by [TinaCMS](https://app.tina.io) for you and your team to visually live edit the structured content of your website. ✨
+TinaDocs is a complete documentation solution built with [Tina CMS](https://tina.io/) that combines developer-friendly tools with content creator accessibility.
 
-The content is managed through Markdown and JSON files stored in your GitHub repository, and queried through Tina GraphQL API.
+![TinaDocs Starter](./public/docs-starter.png)
+**Figure: Landing Page of TinaDocs**
 
-### Features
+## ✨ Why Choose TinaDocs
 
-- [Tina Headless CMS](https://app.tina.io) for authentication, content modeling, visual editing and team management.
-- [Vercel](https://vercel.com) deployment to visually edit your site from the `/admin` route.
-- Local development workflow from the filesystem with a local GraqhQL server.
+### **Rich Feature Set**
+- **🔍 Fast search** - Powered by Pagefind for instant content discovery
+- **📊 API documentation** - Generate beautiful API docs from your OpenAPI specs
+- **📑 Multi-tab interfaces** - Organize complex information with tabbed layouts
+- **🎨 Custom theming** - Make your docs match your brand
+- **✏️ Visual editing** - Content creators can edit directly through TinaCMS
+- **📱 Responsive design** - Works great on all devices
+- **⚡ Performance optimized** - Built with Next.js for fast load times
 
-## Requirements
+### **What Makes It Special**
+- **Modern stack** - Clean, maintainable codebase
+- **Developer-friendly** - Easy to customize and extend
+- **Content creator-friendly** - Non-technical team members can contribute
+- **SEO optimized** - Built-in best practices for search visibility
 
-- Git, [Node.js Active LTS](https://nodejs.org/en/about/releases/), pnpm installed for local development.
-- A [TinaCMS](https://app.tina.io) account for live editing.
+---
 
-## Local Development
+## 🚀 Quick Start with npx
 
-Install the project's dependencies:
+The fastest way to get started with TinaDocs is using npx:
 
-> [!NOTE]  
-> [Do you know the best package manager for Node.js?](https://www.ssw.com.au/rules/best-package-manager-for-node/) Using the right package manager can greatly enhance your development workflow. We recommend using pnpm for its speed and efficient handling of dependencies. Learn more about why pnpm might be the best choice for your projects by checking out this rule from SSW.
-
-
+```bash
+npx {{ TODO }} my-docs --template tinadocs
 ```
+
+This command will:
+- Download and set up TinaDocs in a new directory called `my-docs`
+- Prompt you to select your preferred theme during setup
+- Configure the basic project structure
+- Install all necessary dependencies
+
+### **Available Themes**
+
+When using npx, you can choose from these beautiful themes:
+
+- **Default** - Clean black and white design
+- **Tina** - TinaCMS-inspired theme with orange accents
+- **Blossom** - Elegant pink/rose color scheme
+- **Lake** - Professional blue color palette
+- **Pine** - Natural green tones
+- **Indigo** - Modern purple/indigo design
+
+---
+
+## 📖 How to Use TinaDocs
+
+There are two ways you can use TinaDocs:
+
+• **For developers** – as a launching point to develops a highly custom docs solution. TinaCMS is based on markdown. Use this code as a basis to [implement custom components](https://tina.io/docs/reference/types/rendering-markdown#linking-to-react-components) to be used in MDX to fit your use case. Follow the Getting Started guide below.
+
+• **Quickest experience** – use as is and deploy in minutes via TinaCloud for a docs setup that you still hold all the keys and data for, and get to using right away.
+
+
+> 💡 TinaCMS integrates tighly with GitHub, and has a powerful [editorial workflow](https://tina.io/docs/tina-cloud/editorial-workflow) based on GitHub's branch protection features.
+
+## 🛠️ Getting Started
+
+### **Step 1: Install Dependencies**
+
+> 💡 We recommend `pnpm` for faster installs. [Learn why pnpm is great](https://www.ssw.com.au/rules/best-package-manager-for-node/) for Node.js projects.
+
+```bash
 pnpm install
 ```
 
-Run the project locally:
+### **Step 2: Start Development Server**
 
-```
+```bash
 pnpm dev
 ```
 
-### Local URLs
+Open [http://localhost:3000](http://localhost:3000) to see your docs in action.
 
-- http://localhost:3000 : browse the website
-- http://localhost:3000/admin : connect to Tina Cloud and go in edit mode
-- http://localhost:3000/exit-admin : log out of Tina Cloud
-- http://localhost:4001/altair/ : GraphQL playground to test queries and browse the API documentation
+---
 
-## Deployment
+## 🌐 Production Setup
 
-### GitHub Pages
+### **Step 3: Set Up GitHub and TinaCloud**
 
-This starter can be deployed to GitHub Pages. A GitHub Actions workflow is included that handles the build and deployment process. 
+1. **Add your docs to GitHub**: Push your local repository to GitHub if you haven't already
+2. **Create a TinaCloud account**: Sign up at [app.tina.io](https://app.tina.io)
+3. **Link your repository**: Connect your GitHub repository to TinaCloud through the dashboard
 
-To deploy to GitHub Pages:
+### **Step 4: Configure Environment**
 
-1. In your repository settings, ensure GitHub Pages is enabled and set to deploy from the `gh-pages` branch
-2. Push changes to your main branch - the workflow will automatically build and deploy the site
+1. Rename `.env.example` to `.env`
+2. Add your Tina credentials:
 
-> [!NOTE]
-> When deploying to GitHub Pages, you'll need to update your secrets in Settings | Secrets and variables | Actions to include:
-> - `NEXT_PUBLIC_TINA_CLIENT_ID`
-> - `TINA_TOKEN`
->
-> You get these from your TinaCloud project - [read the docs](https://tina.io/docs/tina-cloud/deployment-options/github-pages)
-
-> [!IMPORTANT]
-> GitHub Pages does not support server side code, so this will run as a static site. If you don't want to deploy to GitHub pages, just delete `.github/workflows/build-and-deploy.yml`
-
-### Building the Starter Locally (Using the hosted content API)
-
-Replace the `.env.example`, with `.env`
-
-```
-NEXT_PUBLIC_TINA_CLIENT_ID=<get this from the project you create at app.tina.io>
-TINA_TOKEN=<get this from the project you create at app.tina.io>
-NEXT_PUBLIC_TINA_BRANCH=<Specify the branch with Tina configured>
+```env
+NEXT_PUBLIC_TINA_CLIENT_ID=<get this from app.tina.io>
+TINA_TOKEN=<get this from app.tina.io>
+NEXT_PUBLIC_TINA_BRANCH=<your content branch>
+NEXT_PUBLIC_ENABLE_THEME_SELECTION=<dispaly theme selector>
 ```
 
-Build the project:
+**Theme Preview Mode:**
+To enable a theme selector in the UI for previewing all themes, add:
+```env
+NEXT_PUBLIC_ENABLE_THEME_SELECTION=true
+```
+
+> 💡 **Note:** The theme selector allows you to preview different themes in real-time, but these changes are temporary and won't persist when you open a new browser window/tab. To make a theme permanent, update the `Selected Them` field in your Settings through TinaCMS.
+
+### **Step 5: Build for Production**
 
 ```bash
 pnpm build
 ```
 
-## Getting Help
+---
 
-To get help with any TinaCMS challenges you may have:
+## 🚀 Deployment
 
-- Visit the [documentation](https://tina.io/docs/) to learn about Tina.
-- [Join our Discord](https://discord.gg/zumN63Ybpf) to share feedback.
-- Visit the [community forum](https://community.tinacms.org/) to ask questions.
-- Get support through the chat widget on the TinaCMS Dashboard
-- [Email us](mailto:support@tina.io) to schedule a call with our team and share more about your context and what you're trying to achieve.
-- [Search or open an issue](https://github.com/tinacms/tinacms/issues) if something is not working.
-- Reach out on Twitter at [@tina_cms](https://twitter.com/tina_cms).
+### **Step 6: Deploy to Vercel** 
 
-## Development tips
+TinaDocs works great with Vercel. Check out our [deployment guide](https://tina.io/docs/tina-cloud/deployment-options/vercel) for detailed instructions.
 
-### Visual Studio Code GraphQL extension
+---
 
-[Install the GraphQL extension](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) to benefit from type auto-completion.
+## 🔍 Search Setup
 
-### Typescript
+TinaDocs includes fast search powered by [Pagefind](https://pagefind.app/), which indexes your content during the build process.
 
-A good way to ensure your components match the shape of your data is to leverage the auto-generated TypeScript types.
-These are rebuilt when your `tina` config changes.
+### **How to Build the Search Index**
 
-## LICENSE
+To generate or update the search index, run:
 
-Licensed under the [Apache 2.0 license](./LICENSE).
+
+```bash
+pnpm build-local-pagefind
+```
+This command:
+
+- Builds the project
+
+- Generates the search index
+
+- Saves the index files to `public/pagefind/`
+
+The search index is automatically updated every time you run the build.
+
+---
+
+## 📚 Learn More
+
+- [Tina Documentation](https://tina.io/docs) - Explore Tina's full capabilities
+- [Getting Started Guide](https://tina.io/docs/setup-overview/) - Quick setup walkthrough
+- [GitHub Repository](https://github.com/tinacms/tinacms) - Contribute or report issues
+
+---
+
+**Ready to improve your documentation?** Give TinaDocs a try!

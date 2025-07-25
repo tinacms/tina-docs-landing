@@ -1,14 +1,7 @@
-query pageQuery {
+query pageQuery ($relativePath: String!) {
   ...LayoutQueryFragment
-  pageConnection {
-    edges {
-      node {
-        id
-        _sys {
-          filename
-        }
-      }
-    }
+  page(relativePath: $relativePath) {
+    ...PageParts
   }
 }
 

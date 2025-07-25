@@ -7,6 +7,7 @@ import { videoBlockSchema } from '@/components/blocks/video';
 import { calloutBlockSchema } from '@/components/blocks/callout';
 import { statsBlockSchema } from '@/components/blocks/stats';
 import { ctaBlockSchema } from '@/components/blocks/call-to-action';
+import { SeoInformation } from './seo';
 
 const Page: Collection = {
   label: 'Pages',
@@ -23,6 +24,13 @@ const Page: Collection = {
     },
   },
   fields: [
+    SeoInformation as any,
+    {
+      type: 'string',
+      name: 'title',
+      label: 'Title',
+      required: true,
+    },
     {
       type: 'object',
       list: true,

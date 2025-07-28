@@ -60,7 +60,6 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
       );
 
     default:
-      console.log("Unknown template type:", template);
       return <span className="text-red-500">Unknown template: {template}</span>;
   }
 };
@@ -75,7 +74,6 @@ export const Header = () => {
 
   const navObjects = header.navObjects!;
 
-  console.log(header.icon);
 
   const [menuState, setMenuState] = React.useState(false);
   return (
@@ -84,7 +82,7 @@ export const Header = () => {
         data-state={menuState && "active"}
         className="bg-background/50 fixed z-20 w-full border-b backdrop-blur-3xl"
       >
-        <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
+        <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center gap-4 lg:gap-8 xl:justify-between">
               <Link

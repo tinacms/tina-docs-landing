@@ -60,7 +60,6 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
       );
 
     default:
-      console.log("Unknown template type:", template);
       return <span className="text-red-500">Unknown template: {template}</span>;
   }
 };
@@ -75,7 +74,6 @@ export const Header = () => {
 
   const navObjects = header.navObjects!;
 
-  console.log(header.icon);
 
   const [menuState, setMenuState] = React.useState(false);
   return (

@@ -17,7 +17,7 @@ export const formatExcerpt = (
     body: ContentBody,
     excerptLength: number
   ): string => {
-    return body.children
+    return body?.children
       ?.filter((c: any) => c.type === "p")
       ?.reduce((excerpt: string, child: any) => {
         // Combine all of child's text and link nodes into a single string

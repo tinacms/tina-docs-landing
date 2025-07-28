@@ -5,25 +5,37 @@
       "color": "orange",
       "style": "float"
     },
-    "name": "Tina Docs",
+    "name": "TinaDocs",
     "color": "default",
     "navObjects": [
       {
-        "label": "Label here",
-        "_template": "githubButton"
-      },
-      {
-        "label": "Nav dropDown option ",
+        "label": "Documentation",
         "_template": "navDropdown"
       },
       {
-        "href": "nav link",
-        "label": "nav link",
-        "_template": "navLink"
+        "label": "Examples",
+        "_template": "navDropdown"
       },
       {
-        "label": "Adding the label",
+        "label": "Community",
+        "_template": "navDropdown"
+      },
+      {
+        "label": "Search",
         "_template": "searchBar"
+      },
+      {
+        "_template": "githubButton"
+      },
+      {
+        "label": "Book a Demo",
+        "variant": "outline",
+        "_template": "ctaButton"
+      },
+      {
+        "label": "Get Started",
+        "variant": "default",
+        "_template": "ctaButton"
       }
     ]
   },

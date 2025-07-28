@@ -1,6 +1,7 @@
 import type { Collection } from "tinacms";
 import { ColorPickerInput } from "../fields/color";
 import { iconSchema } from "../fields/icon";
+import { buttonVariantsArray } from "@/src/components/ui/button";
 
 const navLink = 
 {
@@ -61,6 +62,7 @@ const ctaButton = {
   fields: [
     { name: 'label', type: 'string', label: 'Label' },
     { name: 'url', type: 'string', label: 'URL' },
+    { name: 'variant', type: 'string', label: 'Variant', options: buttonVariantsArray },
   ]
 }
 

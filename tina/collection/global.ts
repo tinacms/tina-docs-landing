@@ -1,6 +1,104 @@
 import type { Collection } from "tinacms";
 import { ColorPickerInput } from "../fields/color";
 import { iconSchema } from "../fields/icon";
+import { buttonVariantsArray } from "@/src/components/ui/button";
+
+const navLink = {
+  name: "navLink",
+  label: "Nav Link",
+  type: "object",
+  ui: {
+    itemProps: (item: any) => {
+      return { label: `🔗 ${item?.label}` };
+    },
+  },
+  fields: [
+    {
+      name: "href",
+      type: "string",
+      label: "Link",
+    },
+    {
+      name: "label",
+      type: "string",
+      label: "Label",
+    },
+  ],
+};
+
+const navDropdown = {
+  name: "navDropdown",
+  label: "Nav Dropdown",
+  type: "object",
+  ui: {
+    itemProps: (item: any) => {
+      return { label: `📁 ${item?.label}` };
+    },
+  },
+  fields: [
+    { name: "label", type: "string", label: "Label" },
+    {
+      name: "links",
+      type: "object",
+      label: "Links",
+      list: true,
+      ui: {
+        itemProps: (item: any) => {
+          return { label: item?.label };
+        },
+      },
+      fields: [
+        { name: "link", type: "string", label: "Link" },
+        { name: "label", type: "string", label: "Label" },
+      ],
+    },
+  ],
+};
+
+const searchBar = {
+  name: "searchBar",
+  label: "Search Bar",
+  type: "object",
+  ui: {
+    itemProps: (item: any) => {
+      return { label: "🔍 Search Bar" };
+    },
+  },
+  fields: [{ name: "label", type: "string", label: "Label" }],
+};
+
+const githubButton = {
+  name: "githubButton",
+  label: "Github Button",
+  type: "object",
+  ui: {
+    itemProps: (item: any) => {
+      return { label: "⭐ Github Button" };
+    },
+  },
+  fields: [{ name: "label", type: "string", label: "Label" }],
+};
+
+const ctaButton = {
+  name: "ctaButton",
+  label: "CTA Button",
+  type: "object",
+  ui: {
+    itemProps: (item: any) => {
+      return { label: `🍌 ${item?.label}` };
+    },
+  },
+  fields: [
+    { name: "label", type: "string", label: "Label" },
+    { name: "url", type: "string", label: "URL" },
+    {
+      name: "variant",
+      type: "string",
+      label: "Variant",
+      options: buttonVariantsArray,
+    },
+  ],
+};
 
 const Global: Collection = {
   label: "Global",
@@ -18,45 +116,16 @@ const Global: Collection = {
       fields: [
         iconSchema as any,
         {
-          type: "string",
-          label: "Name",
-          name: "name",
-        },
-        {
-          type: "string",
-          label: "Color",
-          name: "color",
-          options: [
-            { label: "Default", value: "default" },
-            { label: "Primary", value: "primary" },
-          ],
+          name: "logo",
+          type: "image",
+          label: "Logo",
         },
         {
           type: "object",
-          label: "Nav Links",
-          name: "nav",
+          label: "Navigation Objects",
+          name: "navObjects",
           list: true,
-          ui: {
-            itemProps: (item) => {
-              return { label: item?.label };
-            },
-            defaultItem: {
-              href: "home",
-              label: "Home",
-            },
-          },
-          fields: [
-            {
-              type: "string",
-              label: "Link",
-              name: "href",
-            },
-            {
-              type: "string",
-              label: "Label",
-              name: "label",
-            },
-          ],
+          templates: [navLink, navDropdown, searchBar, githubButton, ctaButton],
         },
       ],
     },
@@ -72,7 +141,7 @@ const Global: Collection = {
           list: true,
           ui: {
             itemProps: (item) => {
-              return { label: item?.icon?.name || 'undefined' };
+              return { label: item?.icon?.name || "undefined" };
             },
           },
           fields: [

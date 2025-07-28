@@ -5,20 +5,74 @@
       "color": "orange",
       "style": "float"
     },
-    "name": "Tina Docs",
-    "color": "default",
-    "nav": [
+    "logo": "/uploads/tinaDocsLogo.svg",
+    "navObjects": [
       {
-        "href": "/",
-        "label": "Home"
+        "label": "Documentation",
+        "links": [
+          {
+            "link": "/getting-started",
+            "label": "Getting Started"
+          },
+          {
+            "link": "/features",
+            "label": "Features"
+          },
+          {
+            "link": "/api-reference",
+            "label": "API Reference"
+          }
+        ],
+        "_template": "navDropdown"
       },
       {
-        "href": "/about",
-        "label": "About"
+        "label": "Examples",
+        "links": [
+          {
+            "link": "/tinaCMS",
+            "label": "TinaCMS"
+          },
+          {
+            "link": "/EagleEye",
+            "label": "EagleEye"
+          },
+          {
+            "link": "/TimePro",
+            "label": "TimePro"
+          }
+        ],
+        "_template": "navDropdown"
       },
       {
-        "href": "/posts",
-        "label": "Blog"
+        "label": "Community",
+        "links": [
+          {
+            "link": "/1",
+            "label": "Smashing Mag"
+          },
+          {
+            "link": "/2",
+            "label": "Unity"
+          }
+        ],
+        "_template": "navDropdown"
+      },
+      {
+        "label": "Search",
+        "_template": "searchBar"
+      },
+      {
+        "_template": "githubButton"
+      },
+      {
+        "label": "Book a Demo",
+        "variant": "outline",
+        "_template": "ctaButton"
+      },
+      {
+        "label": "Get Started",
+        "variant": "default",
+        "_template": "ctaButton"
       }
     ]
   },

@@ -27,7 +27,7 @@ export default async function Layout({ children, rawPageData }: LayoutProps) {
       <main className="overflow-x-hidden pt-20">
         {children}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </LayoutProvider>
   );
 }

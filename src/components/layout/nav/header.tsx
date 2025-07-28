@@ -51,6 +51,10 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
 export const Header = () => {
   const { globalSettings, theme } = useLayout();
   const header = globalSettings!.header!;
+  const doNavObjectsIncludeSearchBar = header.navObjects!.some(
+    (navObject: any) =>
+      navObject.__typename === "GlobalHeaderNavObjectsSearchBar"
+  );
 
   const navObjects = header.navObjects!;
 
@@ -65,21 +69,39 @@ export const Header = () => {
       >
         <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-            <div className="flex w-full items-center justify-between gap-12">
-              <Link href="/" aria-label="home" className="flex items-center">
-                <Image src={header.logo!} width={100} height={100} alt={'Logo'} />
-              </Link>
-              <button
-                onClick={() => setMenuState(!menuState)}
-                aria-label={menuState == true ? "Close Menu" : "Open Menu"}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+            <div className="flex w-full items-center gap-4 lg:gap-8 xl:justify-between">
+              <Link
+                href="/"
+                aria-label="home"
+                className="flex items-center flex-shrink-0"
               >
-                <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-              </button>
+                <Image
+                  src={header.logo!}
+                  width={100}
+                  height={100}
+                  alt={"Logo"}
+                  className="w-auto h-8 lg:h-10"
+                />
+              </Link>
 
-              <div className="hidden lg:block">
-                <ul className="flex gap-6 text-sm items-center">
+              <div className="flex items-center gap-2 lg:hidden ml-auto">
+                <div className="block lg:hidden">
+                  {doNavObjectsIncludeSearchBar && (
+                    <SearchBar placeholder={"Search"} />
+                  )}
+                </div>
+                <button
+                  onClick={() => setMenuState(!menuState)}
+                  aria-label={menuState == true ? "Close Menu" : "Open Menu"}
+                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+                >
+                  <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
+                  <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                </button>
+              </div>
+
+              <div className="hidden lg:block ml-auto">
+                <ul className="flex gap-4 lg:gap-5 text-sm items-center">
                   {navObjects.map((navObject: any, index: number) => (
                     <li key={index}>
                       <NavigationObjectRenderer navObject={navObject} />

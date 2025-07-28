@@ -1,24 +1,24 @@
-import type { Collection } from 'tinacms';
-import { HeroTemplate } from '@/components/blocks/Hero/Hero.template';
-import { contentBlockSchema } from '@/components/blocks/content';
-import { testimonialBlockSchema } from '@/components/blocks/testimonial';
-import { featureBlockSchema } from '@/components/blocks/features';
-import { videoBlockSchema } from '@/components/blocks/video';
-import { calloutBlockSchema } from '@/components/blocks/callout';
-import { statsBlockSchema } from '@/components/blocks/stats';
-import { ctaBlockSchema } from '@/components/blocks/call-to-action';
-import { SeoInformation } from './seo';
+import type { Collection } from "tinacms";
+import { HeroBlockSchema } from "@/components/blocks/Hero/Hero.template";
+import { contentBlockSchema } from "@/components/blocks/content";
+import { testimonialBlockSchema } from "@/components/blocks/testimonial";
+import { featureBlockSchema } from "@/components/blocks/features";
+import { videoBlockSchema } from "@/components/blocks/video";
+import { calloutBlockSchema } from "@/components/blocks/callout";
+import { statsBlockSchema } from "@/components/blocks/stats";
+import { ctaBlockSchema } from "@/components/blocks/call-to-action";
+import { SeoInformation } from "./seo";
 
 const Page: Collection = {
-  label: 'Pages',
-  name: 'page',
-  path: 'content/pages',
-  format: 'mdx',
+  label: "Pages",
+  name: "page",
+  path: "content/pages",
+  format: "mdx",
   ui: {
     router: ({ document }) => {
-      const filepath = document._sys.breadcrumbs.join('/');
-      if (filepath === 'home') {
-        return '/';
+      const filepath = document._sys.breadcrumbs.join("/");
+      if (filepath === "home") {
+        return "/";
       }
       return `/${filepath}`;
     },
@@ -26,21 +26,21 @@ const Page: Collection = {
   fields: [
     SeoInformation as any,
     {
-      type: 'string',
-      name: 'title',
-      label: 'Title',
+      type: "string",
+      name: "title",
+      label: "Title",
       required: true,
     },
     {
-      type: 'object',
+      type: "object",
       list: true,
-      name: 'blocks',
-      label: 'Sections',
+      name: "blocks",
+      label: "Sections",
       ui: {
         visualSelector: true,
       },
       templates: [
-        HeroTemplate,
+        HeroBlockSchema,
         calloutBlockSchema,
         featureBlockSchema,
         statsBlockSchema,

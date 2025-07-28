@@ -67,7 +67,7 @@ export const codeButtonTemplate = {
   fields: [{ name: "label", label: "Label", type: "string" }],
 };
 
-export const HeroTemplate: Template = {
+export const HeroBlockSchema: Template = {
   name: "Hero",
   label: "Hero",
   fields: [

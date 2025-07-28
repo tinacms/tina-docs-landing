@@ -82,18 +82,9 @@ const Global: Collection = {
       fields: [
         iconSchema as any,
         {
-          type: "string",
-          label: "Name",
-          name: "name",
-        },
-        {
-          type: "string",
-          label: "Color",
-          name: "color",
-          options: [
-            { label: "Default", value: "default" },
-            { label: "Primary", value: "primary" },
-          ],
+          name: 'logo',
+          type: 'image',
+          label: 'Logo',
         },
         {
           type: "object",

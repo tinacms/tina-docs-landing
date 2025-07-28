@@ -5,8 +5,7 @@
       "color": "orange",
       "style": "float"
     },
-    "name": "TinaDocs",
-    "color": "default",
+    "logo": "/uploads/tinaDocsLogo.svg",
     "navObjects": [
       {
         "label": "Documentation",

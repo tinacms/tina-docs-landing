@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Icon } from "../../icon";
+import Image from "next/image";
 import { useLayout } from "../layout-context";
 import { Menu, X } from "lucide-react";
 import { Button } from "../../ui/button";
@@ -53,7 +53,7 @@ export const Header = () => {
   const header = globalSettings!.header!;
 
   const navObjects = header.navObjects!;
-  
+
   console.log(header.icon);
 
   const [menuState, setMenuState] = React.useState(false);
@@ -66,22 +66,9 @@ export const Header = () => {
         <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center justify-between gap-12">
-              <Link
-                href="/"
-                aria-label="home"
-                className="flex items-center"
-              >
-                <Icon
-                  parentColor={header.color!}
-                  data={{
-                    name: header.icon!.name,
-                    color: header.icon!.color,
-                    style: header.icon!.style,
-                  }}
-                />{" "}
-                <span className='font-bold'>{header.name}</span>
+              <Link href="/" aria-label="home" className="flex items-center">
+                <Image src={header.logo!} width={100} height={100} alt={'Logo'} />
               </Link>
-
               <button
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState == true ? "Close Menu" : "Open Menu"}

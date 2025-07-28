@@ -28,18 +28,35 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
       return <DropdownButton label={navObject.label} links={navObject.links} />;
 
     case "GlobalHeaderNavObjectsSearchBar":
-      return <SearchBar placeholder={navObject.label} />;
+      return (
+        <div className="hidden lg:block">
+          <SearchBar placeholder={navObject.label} />
+        </div>
+      );
 
     case "GlobalHeaderNavObjectsGithubButton":
-      return <GitHubButton />;
+      return (
+        <div className="hidden lg:block">
+          <GitHubButton />
+        </div>
+      );
 
     case "GlobalHeaderNavObjectsCtaButton":
       return (
-        <Button variant={navObject.variant || "default"} size="sm" asChild>
-          <Link href={navObject.url || "#"}>
-            {navObject.label || "Get Started"}
-          </Link>
-        </Button>
+        <>
+          <div className="hidden lg:block">
+            <Button variant={navObject.variant || "default"} size="sm" asChild>
+              <Link href={navObject.url || "#"}>
+                {navObject.label || "Get Started"}
+              </Link>
+            </Button>
+          </div>
+          <div className="block lg:hidden font-semibold">
+            <Link href={navObject.url || "#"}>
+              {navObject.label || "Get Started"}
+            </Link>
+          </div>
+        </>
       );
 
     default:
@@ -111,7 +128,7 @@ export const Header = () => {
               </div>
             </div>
 
-            <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
+            <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl py-6 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
                   {navObjects.map((navObject: any, index: number) => (

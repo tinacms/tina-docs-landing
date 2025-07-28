@@ -9,14 +9,52 @@
     "navObjects": [
       {
         "label": "Documentation",
+        "links": [
+          {
+            "link": "/getting-started",
+            "label": "Getting Started"
+          },
+          {
+            "link": "/features",
+            "label": "Features"
+          },
+          {
+            "link": "/api-reference",
+            "label": "API Reference"
+          }
+        ],
         "_template": "navDropdown"
       },
       {
         "label": "Examples",
+        "links": [
+          {
+            "link": "/tinaCMS",
+            "label": "TinaCMS"
+          },
+          {
+            "link": "/EagleEye",
+            "label": "EagleEye"
+          },
+          {
+            "link": "/TimePro",
+            "label": "TimePro"
+          }
+        ],
         "_template": "navDropdown"
       },
       {
         "label": "Community",
+        "links": [
+          {
+            "link": "/1",
+            "label": "Smashing Mag"
+          },
+          {
+            "link": "/2",
+            "label": "Unity"
+          }
+        ],
         "_template": "navDropdown"
       },
       {

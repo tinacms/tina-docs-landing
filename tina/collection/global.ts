@@ -2,6 +2,68 @@ import type { Collection } from "tinacms";
 import { ColorPickerInput } from "../fields/color";
 import { iconSchema } from "../fields/icon";
 
+const navLink = 
+{
+  name: 'navLink',
+  label: 'Nav Link',
+  type: 'object',
+  ui: {
+    itemProps: (item: any) => {
+      return { label: item?.label };
+    },
+  },
+  fields: [
+    {
+      name: 'href',
+      type: 'string',
+      label: 'Link',
+    },
+    {
+      name: 'label',
+      type: 'string',
+      label: 'Label',
+    }
+  ]
+}
+
+const navDropdown = {
+  name: 'navDropdown',
+  label: 'Nav Dropdown',
+  type: 'object',
+  fields: [
+    { name: 'label', type: 'string', label: 'Label' },
+    { name: 'links', type: 'object', label: 'Links', list: true, fields: [navLink] },
+  ]
+}
+
+const searchBar = {
+  name: 'searchBar',
+  label: 'Search Bar',
+  type: 'object',
+  fields: [
+    { name: 'label', type: 'string', label: 'Label' },
+  ]
+}
+
+const githubButton = {
+  name: 'githubButton',
+  label: 'Github Button',
+  type: 'object',
+  fields: [
+    { name: 'label', type: 'string', label: 'Label' },
+  ]
+}
+
+const ctaButton = { 
+  name: 'ctaButton',
+  label: 'CTA Button',
+  type: 'object',
+  fields: [
+    { name: 'label', type: 'string', label: 'Label' },
+    { name: 'url', type: 'string', label: 'URL' },
+  ]
+}
+
 const Global: Collection = {
   label: "Global",
   name: "global",
@@ -33,31 +95,17 @@ const Global: Collection = {
         },
         {
           type: "object",
-          label: "Nav Links",
-          name: "nav",
+          label: "Navigation Objects",
+          name: "navObjects",
           list: true,
-          ui: {
-            itemProps: (item) => {
-              return { label: item?.label };
-            },
-            defaultItem: {
-              href: "home",
-              label: "Home",
-            },
-          },
-          fields: [
-            {
-              type: "string",
-              label: "Link",
-              name: "href",
-            },
-            {
-              type: "string",
-              label: "Label",
-              name: "label",
-            },
-          ],
-        },
+          templates: [
+            navLink,
+            navDropdown,
+            searchBar,
+            githubButton,
+            ctaButton,
+          ]
+        }
       ],
     },
     {

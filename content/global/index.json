@@ -7,18 +7,23 @@
     },
     "name": "Tina Docs",
     "color": "default",
-    "nav": [
+    "navObjects": [
       {
-        "href": "/",
-        "label": "Home"
+        "label": "Label here",
+        "_template": "githubButton"
       },
       {
-        "href": "/about",
-        "label": "About"
+        "label": "Nav dropDown option ",
+        "_template": "navDropdown"
       },
       {
-        "href": "/posts",
-        "label": "Blog"
+        "href": "nav link",
+        "label": "nav link",
+        "_template": "navLink"
+      },
+      {
+        "label": "Adding the label",
+        "_template": "searchBar"
       }
     ]
   },

@@ -3,21 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/section";
 import { Copy, Check, ArrowRight } from "lucide-react";
 import { useState } from "react";
-
-interface HeroData {
-  [key: string]: any;
-  title?: string | null;
-  tagline?: string | null;
-  actions?: Array<{
-    [key: string]: any;
-    __typename?: string;
-    label?: string | null;
-    variant?: string;
-    size?: string;
-    url?: string;
-    arrow?: boolean;
-  } | null>;
-}
+import { PageBlocksHero } from "@/tina/__generated__/types";
 
 const CodeButton = ({ label }: { label: string }) => {
   const [copied, setCopied] = useState(false);
@@ -54,7 +40,7 @@ const CodeButton = ({ label }: { label: string }) => {
   );
 };
 
-export default function Hero({ data }: { data?: HeroData }) {
+export default function Hero({ data }: { data?: PageBlocksHero }) {
   return (
     <Section>
       <div className="text-center">
@@ -83,7 +69,7 @@ export default function Hero({ data }: { data?: HeroData }) {
                   <div key={index} data-tina-field={tinaField(action)}>
                     {action.__typename === "PageBlocksHeroActionsCodeButton" ? (
                       <CodeButton label={action.label || ""} />
-                    ) : (
+                    ) : action.__typename === "PageBlocksHeroActionsActions" ? (
                       <Button
                         asChild
                         variant={(action.variant as any) || "default"}
@@ -97,7 +83,7 @@ export default function Hero({ data }: { data?: HeroData }) {
                           )}
                         </a>
                       </Button>
-                    )}
+                    ) : null}
                   </div>
                 )
             )}

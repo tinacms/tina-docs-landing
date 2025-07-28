@@ -35,6 +35,9 @@
       ],
       "@/lib/*": [
         "./src/lib/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
       ]
     },
     "strictNullChecks": true

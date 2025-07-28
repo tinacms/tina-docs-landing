@@ -13,7 +13,7 @@ export interface ClientPageProps {
   query: string;
 }
 
-export default function ClientPage(props: ClientPageProps) {
+export function HomePage(props: ClientPageProps) {
   const { data } = useTina({ ...props });
   return (
     <ErrorBoundary>

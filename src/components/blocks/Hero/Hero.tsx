@@ -1,7 +1,7 @@
 import { tinaField } from "tinacms/dist/react";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/section";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 interface HeroData {
@@ -15,6 +15,7 @@ interface HeroData {
     variant?: string;
     size?: string;
     url?: string;
+    arrow?: boolean;
   } | null>;
 }
 
@@ -87,8 +88,14 @@ export default function Hero({ data }: { data?: HeroData }) {
                         asChild
                         variant={(action.variant as any) || "default"}
                         size={"default"}
+                        arrow={action.arrow || false}
                       >
-                        <a href={action.url || "#"}>{action.label}</a>
+                        <a href={action.url || "#"}>
+                          {action.label}
+                          {action.arrow && (
+                            <ArrowRight className="w-4 h-4 ml-1" />
+                          )}
+                        </a>
                       </Button>
                     )}
                   </div>

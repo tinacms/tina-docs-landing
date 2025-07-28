@@ -17,6 +17,11 @@ export const actionsButtonTemplateFields = {
       ],
     },
     {
+      name: "arrow",
+      label: "Arrow",
+      type: "boolean",
+    },
+    {
       name: "size",
       label: "Size",
       type: "string",

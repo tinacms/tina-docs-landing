@@ -102,7 +102,8 @@ export const HeroBlockSchema: Template = {
       label: "Information Block 1",
       fields: [
         { name: "title", type: "string", label: "Title" },
-        { name: "description", type: "string", label: "Description" },
+        { name: "desc", type: "rich-text", label: "Description" },
+        { name: "icon", type: "image", label: "Icon" },
       ],
     },
     {
@@ -111,7 +112,8 @@ export const HeroBlockSchema: Template = {
       label: "Information Block 2",
       fields: [
         { name: "title", type: "string", label: "Title" },
-        { name: "description", type: "string", label: "Description" },
+        { name: "desc", type: "rich-text", label: "Description" },
+        { name: "icon", type: "image", label: "Icon" },
       ],
     },
     {
@@ -120,7 +122,8 @@ export const HeroBlockSchema: Template = {
       label: "Information Block 3",
       fields: [
         { name: "title", type: "string", label: "Title" },
-        { name: "description", type: "string", label: "Description" },
+        { name: "desc", type: "rich-text", label: "Description" },
+        { name: "icon", type: "image", label: "Icon" },
       ],
     },
   ],

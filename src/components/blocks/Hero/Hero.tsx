@@ -13,18 +13,19 @@ import {
 } from "motion/react";
 import Lenis from "lenis";
 import { CodeButton } from "@/components/ui/code-button";
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 
 function InformationBlock({
   title,
   description,
 }: {
   title: string;
-  description: string;
+  description: TinaMarkdownContent;
 }) {
   return (
-    <div className="flex flex-col border border-white/20 rounded-md p-4 bg-red-500/30">
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <div className="flex flex-col gap-4 border border-white/20 rounded-md p-4 bg-[#191918]/60 shadow-lg text-left 2xl:w-lg w-md">
+      <h2 className="text-3xl font-semibold">{title}</h2>
+      <TinaMarkdown content={description} />
     </div>
   );
 }
@@ -32,6 +33,8 @@ function InformationBlock({
 export default function Hero({ data }: { data?: PageBlocksHero }) {
   const { scrollYProgress } = useScroll();
   const [quartScreen, setQuartScreen] = useState(0);
+
+  console.log(data);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -59,7 +62,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     [0.85, 1],
     [0, -quartScreen * 2]
   );
-  const boxesY = useTransform(scrollYProgress, [0.85, 1], [0, -50]);
+  const boxesY = useTransform(scrollYProgress, [0.85, 1], [0, 25]);
 
   // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
   //   console.log("Progress:", latestValue);
@@ -88,8 +91,8 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   }, []);
 
   return (
-    <Section>
-      <div className="text-center">
+    <Section className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]">
+      <div className="text-center max-w-7xl mx-auto px-6">
         {data?.title && (
           <h1
             className="text-balance text-4xl font-bold lg:text-6xl"
@@ -142,9 +145,18 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
               style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-0"
             >
-              <InformationBlock title="Title" description="Description" />
-              <InformationBlock title="Title" description="Description" />
-              <InformationBlock title="Title" description="Description" />
+              <InformationBlock
+                title={data?.informationBlock1?.title || "Undefined Title"}
+                description={data?.informationBlock1?.desc}
+              />
+              <InformationBlock
+                title={data?.informationBlock2?.title || "Undefined Title"}
+                description={data?.informationBlock2?.desc}
+              />
+              <InformationBlock
+                title={data?.informationBlock3?.title || "Undefined Title"}
+                description={data?.informationBlock3?.desc}
+              />
             </motion.div>
 
             {/* Image above */}
@@ -157,6 +169,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 alt={data.title || ""}
                 width={1000}
                 height={1000}
+                className="border-10 border-[#252934] rounded-lg shadow-xl"
               />
             </motion.div>
           </div>

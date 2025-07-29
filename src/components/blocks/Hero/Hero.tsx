@@ -14,14 +14,20 @@ import {
 import Lenis from "lenis";
 import { CodeButton } from "@/components/ui/code-button";
 
-function InformationBlock({ title, description }: { title: string, description: string }) {
+function InformationBlock({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
   return (
-    <div className='flex flex-col border border-white/20 rounded-md p-4 bg-red-500/30'>
+    <div className="flex flex-col border border-white/20 rounded-md p-4 bg-red-500/30">
       <h2>{title}</h2>
       <p>{description}</p>
     </div>
   );
-};
+}
 
 export default function Hero({ data }: { data?: PageBlocksHero }) {
   const { scrollYProgress } = useScroll();
@@ -41,7 +47,11 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     [0, quartScreen, quartScreen]
   );
 
-  const x = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0, quartScreen * 2]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 0.3, 1],
+    [0, 0, quartScreen * 1.5]
+  );
 
   const boxesOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
   const boxesX = useTransform(
@@ -55,8 +65,21 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   //   console.log("Progress:", latestValue);
   // });
 
+  const maxSpeed = 1.5;
+  const smoothness = 2.5;
+  const wheelMultiplier = 0.8;
+
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      duration: smoothness, // Higher = smoother/slower
+      easing: (t: number): number => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: wheelMultiplier, // Lower = slower scroll response
+      touchMultiplier: wheelMultiplier * 0.6, // Even slower on touch
+      infinite: false,
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+    });
 
     function raf(time: number) {
       lenis.raf(time);

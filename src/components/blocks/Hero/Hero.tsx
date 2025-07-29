@@ -57,6 +57,8 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     [0, 0, quartScreen * 1.5]
   );
 
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.1, 0.85]);
+
   const boxesOpacityBase = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
   const boxesXBase = useTransform(
     scrollYProgress,
@@ -179,7 +181,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
             {/* Image above */}
             <motion.div
               className="mt-16 flex justify-center relative z-10"
-              style={{ y, x }}
+              style={{ y, x, scale }}
             >
               <Image
                 src={data.media}

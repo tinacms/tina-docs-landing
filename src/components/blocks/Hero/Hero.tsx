@@ -65,7 +65,6 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   //   console.log("Progress:", latestValue);
   // });
 
-  const maxSpeed = 1.5;
   const smoothness = 2.5;
   const wheelMultiplier = 0.8;
 

@@ -91,5 +91,37 @@ export const HeroBlockSchema: Template = {
         codeButtonTemplate as Template,
       ],
     },
+    {
+      name: "media",
+      type: "image",
+      label: "Media",
+    },
+    {
+      name: "informationBlock1",
+      type: "object",
+      label: "Information Block 1",
+      fields: [
+        { name: "title", type: "string", label: "Title" },
+        { name: "description", type: "string", label: "Description" },
+      ],
+    },
+    {
+      name: "informationBlock2",
+      type: "object",
+      label: "Information Block 2",
+      fields: [
+        { name: "title", type: "string", label: "Title" },
+        { name: "description", type: "string", label: "Description" },
+      ],
+    },
+    {
+      name: "informationBlock3",
+      type: "object",
+      label: "Information Block 3",
+      fields: [
+        { name: "title", type: "string", label: "Title" },
+        { name: "description", type: "string", label: "Description" },
+      ],
+    },
   ],
 };

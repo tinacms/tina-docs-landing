@@ -2,45 +2,69 @@ import { tinaField } from "tinacms/dist/react";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/section";
 import { Copy, Check, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PageBlocksHero } from "@/tina/__generated__/types";
+import Image from "next/image";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import Lenis from "lenis";
+import { CodeButton } from "@/components/ui/code-button";
 
-const CodeButton = ({ label }: { label: string }) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(label);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
-  };
-
+function InformationBlock({ title, description }: { title: string, description: string }) {
   return (
-    <button
-      onClick={handleCopy}
-      className="inline-flex items-center justify-between gap-2 h-9 px-4 border border-white/20 rounded-md bg-transparent text-white font-mono text-sm hover:bg-white/5 transition-all duration-200 ease-in-out hover:cursor-pointer"
-    >
-      <span className="transition-all duration-200">{label}</span>
-      <div className="relative w-4 h-4 flex-shrink-0">
-        <Copy
-          className={`absolute inset-0 w-4 h-4 transition-all duration-200 ease-in-out ${
-            copied ? "opacity-0 scale-75" : "opacity-100 scale-100"
-          }`}
-        />
-        <Check
-          className={`absolute inset-0 w-4 h-4 text-green-400 transition-all duration-200 ease-in-out ${
-            copied ? "opacity-100 scale-100" : "opacity-0 scale-75"
-          }`}
-        />
-      </div>
-    </button>
+    <div className='flex flex-col border border-white/20 rounded-md p-4 bg-red-500/30'>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
   );
 };
 
 export default function Hero({ data }: { data?: PageBlocksHero }) {
+  const { scrollYProgress } = useScroll();
+  const [quartScreen, setQuartScreen] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("Window.innerHeight", window.innerHeight);
+      setQuartScreen(window.innerHeight / 4);
+      console.log("quartScreen", quartScreen);
+    }
+  }, []);
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0, quartScreen, quartScreen]
+  );
+
+  const x = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0, quartScreen * 2]);
+
+  const boxesOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
+  const boxesX = useTransform(
+    scrollYProgress,
+    [0.85, 1],
+    [0, -quartScreen * 2]
+  );
+  const boxesY = useTransform(scrollYProgress, [0.85, 1], [0, -50]);
+
+  // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
+  //   console.log("Progress:", latestValue);
+  // });
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     <Section>
       <div className="text-center">
@@ -87,6 +111,32 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                   </div>
                 )
             )}
+          </div>
+        )}
+        {data?.media && (
+          <div className="relative min-h-[100vh]">
+            {/* Boxes underneath */}
+            <motion.div
+              style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-0"
+            >
+              <InformationBlock title="Title" description="Description" />
+              <InformationBlock title="Title" description="Description" />
+              <InformationBlock title="Title" description="Description" />
+            </motion.div>
+
+            {/* Image above */}
+            <motion.div
+              className="mt-8 flex justify-center relative z-10"
+              style={{ y, x }}
+            >
+              <Image
+                src={data.media}
+                alt={data.title || ""}
+                width={1000}
+                height={1000}
+              />
+            </motion.div>
           </div>
         )}
       </div>

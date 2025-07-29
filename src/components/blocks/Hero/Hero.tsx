@@ -10,6 +10,7 @@ import {
   useMotionValueEvent,
   useScroll,
   useTransform,
+  useSpring,
 } from "motion/react";
 import Lenis from "lenis";
 import { CodeButton } from "@/components/ui/code-button";
@@ -23,8 +24,8 @@ function InformationBlock({
   description: TinaMarkdownContent;
 }) {
   return (
-    <div className="flex flex-col gap-4 border border-white/20 rounded-md p-4 bg-[#191918]/60 shadow-lg text-left 2xl:w-lg w-md">
-      <h2 className="text-3xl font-semibold">{title}</h2>
+    <div className="flex flex-col gap-4 border border-white/20 rounded-md p-4 bg-[#191918]/60 shadow-lg text-left 2xl:w-lg w-sm">
+      <h2 className="text-2xl font-semibold">{title}</h2>
       <TinaMarkdown content={description} />
     </div>
   );
@@ -52,17 +53,33 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
 
   const x = useTransform(
     scrollYProgress,
-    [0, 0.3, 1],
+    [0, 0.5, 1],
     [0, 0, quartScreen * 1.5]
   );
 
-  const boxesOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
-  const boxesX = useTransform(
+  const boxesOpacityBase = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
+  const boxesXBase = useTransform(
     scrollYProgress,
-    [0.85, 1],
+    [0.7, 1],
     [0, -quartScreen * 2]
   );
-  const boxesY = useTransform(scrollYProgress, [0.85, 1], [0, 25]);
+  const boxesYBase = useTransform(scrollYProgress, [0.7, 1], [0, 25]);
+
+  const boxesOpacity = useSpring(boxesOpacityBase, {
+    stiffness: 300,
+    damping: 30,
+    restDelta: 0.001,
+  });
+  const boxesX = useSpring(boxesXBase, {
+    stiffness: 200,
+    damping: 25,
+    restDelta: 0.001,
+  });
+  const boxesY = useSpring(boxesYBase, {
+    stiffness: 200,
+    damping: 25,
+    restDelta: 0.001,
+  });
 
   // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
   //   console.log("Progress:", latestValue);
@@ -103,7 +120,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
         )}
         {data?.tagline && (
           <p
-            className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="mt-4 text-lg text-muted-foreground max-w-md mx-auto"
             data-tina-field={tinaField(data, "tagline")}
           >
             {data.tagline}
@@ -161,7 +178,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
 
             {/* Image above */}
             <motion.div
-              className="mt-8 flex justify-center relative z-10"
+              className="mt-16 flex justify-center relative z-10"
               style={{ y, x }}
             >
               <Image

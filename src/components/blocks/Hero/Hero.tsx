@@ -42,9 +42,9 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log("Window.innerHeight", window.innerHeight);
+      // console.log("Window.innerHeight", window.innerHeight);
       setQuartScreen(window.innerHeight / 4);
-      console.log("quartScreen", quartScreen);
+      // console.log("quartScreen", quartScreen);
     }
   }, []);
 
@@ -87,7 +87,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
-    console.log("Progress:", latestValue);
+    // console.log("Progress:", latestValue);
   });
 
   const smoothness = 4;

@@ -57,26 +57,47 @@ export const Footer = () => {
           {footer?.itemList?.[0] && (
             <FooterList
               title={footer?.itemList[0]?.title || ""}
-              links={footer?.itemList[0]?.links || []}
+              links={
+                footer?.itemList[0]?.links
+                  ?.filter((link) => link !== null)
+                  .map((link) => ({
+                    label: link.label,
+                    url: link.url,
+                  })) || []
+              }
             />
           )}
           {footer?.itemList?.[1] && (
             <FooterList
               title={footer?.itemList[1]?.title || ""}
-              links={footer?.itemList[1]?.links || []}
+              links={
+                footer?.itemList[1]?.links
+                  ?.filter((link) => link !== null)
+                  .map((link) => ({
+                    label: link.label,
+                    url: link.url,
+                  })) || []
+              }
             />
           )}
           {footer?.itemList?.[2] && (
             <FooterList
               title={footer?.itemList[2]?.title || ""}
-              links={footer?.itemList[2]?.links || []}
+              links={
+                footer?.itemList[2]?.links
+                  ?.filter((link) => link !== null)
+                  .map((link) => ({
+                    label: link.label,
+                    url: link.url,
+                  })) || []
+              }
             />
           )}
         </div>
       </div>
       <div className="flex justify-center text-center items-center py-10">
         <p className="text-sm text-muted-foreground">
-           © {new Date().getFullYear()} {footer?.reservedText}
+          © {new Date().getFullYear()} {footer?.reservedText}
         </p>
       </div>
     </footer>

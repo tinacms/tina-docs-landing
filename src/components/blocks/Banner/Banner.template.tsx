@@ -1,6 +1,9 @@
 export const BannerSchema = {
   name: "Banner",
   label: "Banner",
+  ui: {
+    previewSrc: '/blocks/banner.png',
+  },
   fields: [
     {
         name: 'quote',

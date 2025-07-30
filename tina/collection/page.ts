@@ -8,6 +8,7 @@ import { calloutBlockSchema } from "@/components/blocks/callout";
 import { statsBlockSchema } from "@/components/blocks/stats";
 import { ctaBlockSchema } from "@/components/blocks/call-to-action";
 import { SeoInformation } from "./seo";
+import { BannerSchema } from "@/src/components/blocks/Banner/Banner.template";
 
 const Page: Collection = {
   label: "Pages",
@@ -41,6 +42,7 @@ const Page: Collection = {
       },
       templates: [
         HeroBlockSchema,
+        BannerSchema,
         calloutBlockSchema,
         featureBlockSchema,
         statsBlockSchema,
@@ -48,6 +50,7 @@ const Page: Collection = {
         contentBlockSchema,
         testimonialBlockSchema,
         videoBlockSchema,
+
       ],
     },
   ],

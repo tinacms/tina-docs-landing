@@ -2,7 +2,7 @@ import { tinaField } from "tinacms/dist/react";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/layout/section";
 import { Copy, Check, ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PageBlocksHero } from "@/tina/__generated__/types";
 import Image from "next/image";
 import {
@@ -32,10 +32,13 @@ function InformationBlock({
 }
 
 export default function Hero({ data }: { data?: PageBlocksHero }) {
-  const { scrollYProgress } = useScroll();
-  const [quartScreen, setQuartScreen] = useState(0);
+  const heroComponentRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroComponentRef,
+    offset: ["start start", "end end"],
+  });
 
-  console.log(data);
+  const [quartScreen, setQuartScreen] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -48,7 +51,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   const y = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0, quartScreen, quartScreen]
+    [0, quartScreen, quartScreen *1.1]
   );
 
   const x = useTransform(
@@ -83,11 +86,11 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     restDelta: 0.001,
   });
 
-  // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
-  //   console.log("Progress:", latestValue);
-  // });
+  useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
+    console.log("Progress:", latestValue);
+  });
 
-  const smoothness = 2.5;
+  const smoothness = 4;
   const wheelMultiplier = 0.8;
 
   useEffect(() => {
@@ -110,7 +113,10 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   }, []);
 
   return (
-    <Section className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]">
+    <Section
+      className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]"
+      ref={heroComponentRef}
+    >
       <div className="text-center max-w-7xl mx-auto px-6">
         {data?.title && (
           <h1

@@ -8,82 +8,90 @@ export const MediaFeatureBlockSchema: Template = {
   },
   fields: [
     {
-      name: "isMediaOnRight",
-      type: "boolean",
-      description: 'On = Yes',
-      label: "Is Media on Right?",
-    },
-    {
-      name: "features",
+      name: "MediaBlock",
+      label: "Media Block",
       type: "object",
-      label: "Features",
       list: true,
-      ui: {
-        min: 0,
-        max: 2,
-      },
       fields: [
         {
-          name: "title",
-          type: "string",
-          label: "Title",
+          name: "isMediaOnRight",
+          type: "boolean",
+          description: "On = Yes",
+          label: "Is Media on Right?",
         },
         {
-          name: "description",
-          type: "rich-text",
-          label: "Description",
-        },
-        {
-          name: "link",
-          type: "string",
-          label: "Link",
-        },
-      ],
-    },
-    {
-      name: "mediaContent",
-      type: "object",
-      label: "Media Content",
-      list: true,
-      ui: {
-        min: 0,
-        max: 1,
-      },
-      templates: [
-        {
-          name: "image",
-          label: "Image",
+          name: "features",
+          type: "object",
+          label: "Features",
+          list: true,
+          ui: {
+            min: 0,
+            max: 2,
+          },
           fields: [
             {
-              name: "image",
-              label: "Image",
-              type: "image",
+              name: "title",
+              type: "string",
+              label: "Title",
             },
             {
-                name: 'alt',
-                label: 'Alt Text',
-                type: 'string',
+              name: "description",
+              type: "rich-text",
+              label: "Description",
+            },
+            {
+              name: "link",
+              type: "string",
+              label: "Link",
             },
           ],
         },
         {
-          name: "youtubeVideo",
-          label: "YouTube Video",
-          fields: [
+          name: "mediaContent",
+          type: "object",
+          label: "Media Content",
+          list: true,
+          ui: {
+            min: 0,
+            max: 1,
+          },
+          templates: [
             {
-              name: "videoSrc",
-              label: "YouTube Video Source",
-              type: "string",
+              name: "image",
+              label: "Image",
+              fields: [
+                {
+                  name: "image",
+                  label: "Image",
+                  type: "image",
+                },
+                {
+                  name: "alt",
+                  label: "Alt Text",
+                  type: "string",
+                },
+              ],
             },
             {
-              name: "thumbnail",
-              label: "Thumbnail",
-              type: "image",
-            },
-            {
-                name: 'alt',
-                label: 'Alt Text',
-                type: 'string',
+              name: "youtubeVideo",
+              label: "YouTube Video",
+              fields: [
+                {
+                  name: "videoSrc",
+                  label: "YouTube Video Source",
+                  type: "string",
+                },
+                {
+                  name: "thumbnail",
+                  label: "Thumbnail",
+                  type: "image",
+                },
+                {
+                  name: "alt",
+                  label: "Alt Text",
+                  type: "string",
+                },
+              ],
             },
           ],
         },

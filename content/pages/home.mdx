@@ -36,23 +36,37 @@ blocks:
     authorInfo: Product Engineering Manager for AI and Docs
     image: /uploads/Logos/Frame.svg
     _template: Banner
-  - isMediaOnRight: false
-    features:
-      - title: API Reference
-        description: >
-          See how easy it is to upload documents and select endpoints with our
-          powerful API reference system.
-        link: /some-link
-      - title: Unbeatable UX
-        description: >
-          See how easy it is to upload documents and select endpoints with our
-          powerful API reference system.
-        link: /another-link
-    mediaContent:
-      - videoSrc: '"https://www.youtube.com/embed/E0nehGoMwWM?si=-Tpq_6ftv3FlFl9i"'
-        thumbnail: /uploads/posts/learning-about-tinacloud.png
-        alt: some alt text
-        _template: youtubeVideo
+  - MediaBlock:
+      - isMediaOnRight: true
+        features:
+          - title: Avoid Mistakes with Editorial Workflow
+            description: >
+              Built-in review processes ensure accuracy and consistency. Catch
+              errors before they reach your users with our comprehensive
+              editorial workflow. 
+            link: /fake-link
+        mediaContent:
+          - videoSrc: 'https://www.youtube.com/embed/sTVd8CYtXrA?si=0jMAjA_5ZTXJIuBC'
+            thumbnail: /uploads/posts/learning-about-markdown.png
+            alt: alt
+            _template: youtubeVideo
+      - isMediaOnRight: false
+        features:
+          - title: API Reference
+            description: >
+              See how easy it is to upload documents and select endpoints with
+              our powerful API reference system.
+            link: /some-link
+          - title: Unbeatable UX
+            description: >
+              See how easy it is to upload documents and select endpoints with
+              our powerful API reference system.
+            link: /another-link
+        mediaContent:
+          - videoSrc: 'https://www.youtube.com/embed/sTVd8CYtXrA?si=0jMAjA_5ZTXJIuBC'
+            thumbnail: /uploads/posts/learning-about-tinacloud.png
+            alt: adads
+            _template: youtubeVideo
     _template: MediaFeature
 ---
 

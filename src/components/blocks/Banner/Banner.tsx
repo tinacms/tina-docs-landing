@@ -16,7 +16,7 @@ function formatQuoteWithBrackets(text: string) {
 
 export default function Banner({ data }: { data: any }) {
   return (
-    <Section className="flex justify-center gap-8">
+    <Section className="flex justify-center gap-16 items-center">
       {data.image && (
         <Image src={data.image} alt={data.title} width={200} height={200} />
       )}

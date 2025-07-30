@@ -35,12 +35,10 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   const heroComponentRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroComponentRef,
-    offset: ['start start', 'end end'],
+    offset: ["start start", "end end"],
   });
 
   const [quartScreen, setQuartScreen] = useState(0);
-
-
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -53,7 +51,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   const y = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0, quartScreen, quartScreen]
+    [0, quartScreen, quartScreen *1.1]
   );
 
   const x = useTransform(
@@ -115,7 +113,10 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   }, []);
 
   return (
-    <Section className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]" ref={heroComponentRef}>
+    <Section
+      className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]"
+      ref={heroComponentRef}
+    >
       <div className="text-center max-w-7xl mx-auto px-6">
         {data?.title && (
           <h1

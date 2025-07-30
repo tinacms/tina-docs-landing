@@ -70,6 +70,9 @@ export const codeButtonTemplate = {
 export const HeroBlockSchema: Template = {
   name: "Hero",
   label: "Hero",
+  ui: {
+    previewSrc: '/blocks/hero.png',
+  },
   fields: [
     { name: "title", type: "string", label: "Title" },
     {

@@ -147,7 +147,7 @@ function mediaBlock(data: any) {
             renderMediaContent(data?.mediaContent?.[0])}
         </div>
         <div className="w-[0.5px] bg-[#3B3A37]">{""}</div>
-        <div className="w-2/5">{renderFeatures(data.features || [])}</div>
+        <div className="w-2/5 flex items-center">{renderFeatures(data.features || [])}</div>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import { statsBlockSchema } from "@/components/blocks/stats";
 import { ctaBlockSchema } from "@/components/blocks/call-to-action";
 import { SeoInformation } from "./seo";
 import { BannerSchema } from "@/src/components/blocks/Banner/Banner.template";
+import { MediaFeatureBlockSchema } from "@/src/components/blocks/MediaFeature/MediaFeature.template";
 
 const Page: Collection = {
   label: "Pages",
@@ -43,6 +44,7 @@ const Page: Collection = {
       templates: [
         HeroBlockSchema,
         BannerSchema,
+        MediaFeatureBlockSchema,
         calloutBlockSchema,
         featureBlockSchema,
         statsBlockSchema,

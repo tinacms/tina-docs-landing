@@ -9,6 +9,7 @@ import { Callout } from "./callout";
 import { Stats } from "./stats";
 import { CallToAction } from "./call-to-action";
 import Banner from "./Banner/Banner";
+import MediaFeature from "./MediaFeature/MediaFeature";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   if (!props.blocks) return null;
@@ -45,6 +46,8 @@ const Block = (block: PageBlocks) => {
       return <CallToAction data={block} />;
     case "PageBlocksBanner":
       return <Banner data={block} />;
+    case "PageBlocksMediaFeature":
+      return <MediaFeature data={block} />;
     default:
       return null;
   }

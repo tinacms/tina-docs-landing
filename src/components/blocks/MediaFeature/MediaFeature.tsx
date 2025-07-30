@@ -19,7 +19,6 @@ function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
         <iframe
           src={mediaContent.videoSrc}
           title={mediaContent.alt || "YouTube Video"}
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="w-full h-full rounded-lg"
@@ -139,14 +138,15 @@ function mediaBlock(data: any) {
   return (
     <div className="w-full border-y-[0.5px] border-sand-6 px-10">
       <div
-        className={` max-w-7xl mx-auto border-x-[0.5px] border-sand-6 flex items-center  h-full justify-center ${
+        className={`max-w-7xl mx-auto border-x-[0.5px] border-sand-6 flex items-stretch justify-center ${
           isMediaOnRight ? "flex-row-reverse" : "flex-row"
         }`}
       >
-        <div className="w-3/5 p-20 border-r-[0.5px] border-sand-6 bg-gradient-to-b from-transparent via-transparent to-[#182449]">
+        <div className="w-3/5 p-20 bg-gradient-to-b from-transparent via-transparent to-[#182449]/75">
           {data?.mediaContent?.[0] &&
             renderMediaContent(data?.mediaContent?.[0])}
         </div>
+        <div className="w-[0.5px] bg-[#3B3A37]">{""}</div>
         <div className="w-2/5">{renderFeatures(data.features || [])}</div>
       </div>
     </div>
@@ -160,7 +160,7 @@ export default function MediaFeature({
 }) {
   console.log(data);
   return (
-    <div className='py-10'>
+    <div className="py-10">
       {data.MediaBlock &&
         data.MediaBlock.map((block: any) => mediaBlock(block))}
     </div>

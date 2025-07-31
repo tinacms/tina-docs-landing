@@ -44,7 +44,6 @@ const ContentGridItem = ({
 };
 
 export default function ContentGrid({ data }: { data: any }) {
-  console.log("content grid", data);
   return (
     <Section className="flex flex-col gap-16 items-center justify-center">
       <h2 className="text-5xl font-bold">{data.title}</h2>

@@ -54,11 +54,12 @@ export const Footer = () => {
               </a>
             </Button>
           </div>
-          {footer?.itemList?.[0] && (
+          {footer?.itemList?.map((item, index) => (
             <FooterList
-              title={footer?.itemList[0]?.title || ""}
+              key={index}
+              title={item?.title || ""}
               links={
-                footer?.itemList[0]?.links
+                item?.links
                   ?.filter((link) => link !== null)
                   .map((link) => ({
                     label: link.label,
@@ -66,33 +67,7 @@ export const Footer = () => {
                   })) || []
               }
             />
-          )}
-          {footer?.itemList?.[1] && (
-            <FooterList
-              title={footer?.itemList[1]?.title || ""}
-              links={
-                footer?.itemList[1]?.links
-                  ?.filter((link) => link !== null)
-                  .map((link) => ({
-                    label: link.label,
-                    url: link.url,
-                  })) || []
-              }
-            />
-          )}
-          {footer?.itemList?.[2] && (
-            <FooterList
-              title={footer?.itemList[2]?.title || ""}
-              links={
-                footer?.itemList[2]?.links
-                  ?.filter((link) => link !== null)
-                  .map((link) => ({
-                    label: link.label,
-                    url: link.url,
-                  })) || []
-              }
-            />
-          )}
+          ))}
         </div>
       </div>
       <div className="flex justify-center text-center items-center py-10">

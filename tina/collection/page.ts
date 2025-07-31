@@ -10,6 +10,7 @@ import { ctaBlockSchema } from "@/components/blocks/call-to-action";
 import { SeoInformation } from "./seo";
 import { BannerSchema } from "@/src/components/blocks/Banner/Banner.template";
 import { MediaFeatureBlockSchema } from "@/src/components/blocks/MediaFeature/MediaFeature.template";
+import { ContentGridSchema } from "@/src/components/blocks/ContentGrid/ContentGrid.template";
 
 const Page: Collection = {
   label: "Pages",
@@ -45,6 +46,7 @@ const Page: Collection = {
         HeroBlockSchema,
         BannerSchema,
         MediaFeatureBlockSchema,
+        ContentGridSchema,
         calloutBlockSchema,
         featureBlockSchema,
         statsBlockSchema,
@@ -52,7 +54,6 @@ const Page: Collection = {
         contentBlockSchema,
         testimonialBlockSchema,
         videoBlockSchema,
-
       ],
     },
   ],

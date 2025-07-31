@@ -135,21 +135,58 @@ const Global: Collection = {
       name: "footer",
       fields: [
         {
+          name: "reservedText",
+          label: "Reserved Text",
+          type: "string",
+          description:
+            "This is the text that will be displayed at the bottom of the footer, usually used for the All Rights Reserved text",
+        },
+        {
+          name: "lhs",
           type: "object",
-          label: "Social Links",
-          name: "social",
+          label: "Left Hand Side Content",
+          fields: [
+            { name: "logo", type: "image", label: "Logo" },
+            { name: "subtext", type: "string", label: "Subtext" },
+            {
+              name: "button",
+              type: "object",
+              label: "Button",
+              fields: [
+                { name: "label", type: "string", label: "Label" },
+                { name: "url", type: "string", label: "URL" },
+              ],
+            },
+          ],
+        },
+        {
+          name: "itemList",
+          type: "object",
+          label: "Item List",
           list: true,
           ui: {
-            itemProps: (item) => {
-              return { label: item?.icon?.name || "undefined" };
+            min: 0,
+            max: 3,
+            itemProps: (item: any) => {
+              return { label: `📁 ${item?.title}` };
             },
           },
           fields: [
-            iconSchema as any,
+            { name: "title", type: "string", label: "Title" },
             {
-              type: "string",
-              label: "Url",
-              name: "url",
+              name: "links",
+              type: "object",
+              label: "Links",
+              list: true,
+              ui: {
+                itemProps: (item: any) => {
+                  return { label: item?.label };
+                },
+              },
+              fields: [
+                { name: "label", type: "string", label: "Label" },
+                { name: "url", type: "string", label: "URL" },
+              ],
             },
           ],
         },

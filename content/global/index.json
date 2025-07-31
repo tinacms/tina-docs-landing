@@ -77,30 +77,78 @@
     ]
   },
   "footer": {
-    "social": [
+    "reservedText": "TinaDocs. All rights reserved.",
+    "lhs": {
+      "logo": "/uploads/tinaDocsLogo.svg",
+      "subtext": "The modern way to build and manage documentation",
+      "button": {
+        "label": "Subscribe",
+        "url": "/doesnt-go-anywhere-yet"
+      }
+    },
+    "itemList": [
       {
-        "icon": {
-          "name": "FaLinkedin"
-        },
-        "url": "https://www.linkedin.com/company/tinacms"
+        "title": "Product",
+        "links": [
+          {
+            "label": "Features",
+            "url": "/feat"
+          },
+          {
+            "label": "Pricing",
+            "url": "/pricing"
+          },
+          {
+            "label": "Examples",
+            "url": "/examples"
+          },
+          {
+            "label": "Templates",
+            "url": "/tea"
+          }
+        ]
       },
       {
-        "icon": {
-          "name": "FaGithub"
-        },
-        "url": "https://github.com/tinacms/tinacms"
+        "title": "Resources",
+        "links": [
+          {
+            "label": "Documentation",
+            "url": "/doc"
+          },
+          {
+            "label": "API Reference",
+            "url": "/api"
+          },
+          {
+            "label": "Guides",
+            "url": "/guide"
+          },
+          {
+            "label": "Blog",
+            "url": "/blog"
+          }
+        ]
       },
       {
-        "icon": {
-          "name": "FaYoutube"
-        },
-        "url": "https://www.youtube.com/@TinaCMS"
-      },
-      {
-        "icon": {
-          "name": "FaXTwitter"
-        },
-        "url": "https://x.com/TinaCMS"
+        "title": "Company",
+        "links": [
+          {
+            "label": "About",
+            "url": "/abt"
+          },
+          {
+            "label": "Careers",
+            "url": "/car"
+          },
+          {
+            "label": "Contact",
+            "url": "/cont"
+          },
+          {
+            "label": "Support",
+            "url": "/spt"
+          }
+        ]
       }
     ]
   },

@@ -53,7 +53,7 @@ export default function ContentGrid({ data }: { data: any }) {
           <ContentGridItem key={index} item={item} onlyYBorder={index === 1} />
         ))}
         {data.image && (
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[60%] aspect-[16/9]">
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[75%] aspect-[16/7]">
             <Image
               src={data.image}
               alt=""

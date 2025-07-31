@@ -32,7 +32,7 @@ export const Footer = () => {
   const { globalSettings } = useLayout();
   const { header, footer } = globalSettings!;
 
-  console.log("footer", footer);
+  
 
   return (
     <footer>

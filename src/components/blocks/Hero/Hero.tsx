@@ -90,19 +90,15 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     restDelta: 0.001,
   });
 
-  // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
-  //   console.log("Progress:", latestValue);
-  // });
-
-  const smoothness = 4;
-  const wheelMultiplier = 0.8;
+  const SMOOTHNESS = 4;
+  const WHEEL_MULTIPLIER = 0.8;
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: smoothness, // Higher = smoother/slower
+      duration: SMOOTHNESS, // Higher = smoother/slower
       easing: (t: number): number => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: wheelMultiplier, // Lower = slower scroll response
-      touchMultiplier: wheelMultiplier * 0.6, // Even slower on touch
+      wheelMultiplier: WHEEL_MULTIPLIER, // Lower = slower scroll response
+      touchMultiplier: WHEEL_MULTIPLIER * 0.6, // Even slower on touch
       infinite: false,
       orientation: "vertical",
       gestureOrientation: "vertical",

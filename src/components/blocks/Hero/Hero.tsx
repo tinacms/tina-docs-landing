@@ -38,14 +38,12 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     offset: ["start start", "end end"],
   });
 
-  const [quartScreen, setQuartScreen] = useState(0);
   const [screenHeight, setScreenHeight] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setScreenHeight(window.innerHeight);
-      setQuartScreen(window.innerHeight / 4);
       setScreenWidth(window.innerWidth);
     }
   }, []);

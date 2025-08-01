@@ -175,31 +175,42 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
           </div>
         )}
         {data?.media && (
-          <div className="relative min-h-[100vh]  justify-center">
-            {/* Boxes underneath */}
-            <motion.div
-              style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
-              className="absolute left-1/2 -translate-x-1/2 flex flex-col gap-4 z-0"
-            >
-              <InformationBlock
-                title={data?.informationBlock1?.title || "Undefined Title"}
-                description={data?.informationBlock1?.desc}
-              />
-              <InformationBlock
-                title={data?.informationBlock2?.title || "Undefined Title"}
-                description={data?.informationBlock2?.desc}
-              />
-              <InformationBlock
-                title={data?.informationBlock3?.title || "Undefined Title"}
-                description={data?.informationBlock3?.desc}
-              />
-            </motion.div>
+          <>
+            <div className="hidden lg:block relative min-h-[100vh]  justify-center">
+              {/* Boxes underneath */}
+              <motion.div
+                style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
+                className="absolute left-1/2 -translate-x-1/2 flex flex-col gap-4 z-0"
+              >
+                <InformationBlock
+                  title={data?.informationBlock1?.title || "Undefined Title"}
+                  description={data?.informationBlock1?.desc}
+                />
+                <InformationBlock
+                  title={data?.informationBlock2?.title || "Undefined Title"}
+                  description={data?.informationBlock2?.desc}
+                />
+                <InformationBlock
+                  title={data?.informationBlock3?.title || "Undefined Title"}
+                  description={data?.informationBlock3?.desc}
+                />
+              </motion.div>
 
-            {/* Image above */}
-            <motion.div
-              className="mt-16 flex justify-center relative z-10"
-              style={{ y, x, scale }}
-            >
+              {/* Image above */}
+              <motion.div
+                className="mt-16 flex justify-center relative z-10"
+                style={{ y, x, scale }}
+              >
+                <Image
+                  src={data.media}
+                  alt={data.title || ""}
+                  width={1000}
+                  height={1000}
+                  className="border-10 border-[#252934] rounded-lg shadow-xl"
+                />
+              </motion.div>
+            </div>
+            <div className="block lg:hidden pt-16">
               <Image
                 src={data.media}
                 alt={data.title || ""}
@@ -207,8 +218,8 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 height={1000}
                 className="border-10 border-[#252934] rounded-lg shadow-xl"
               />
-            </motion.div>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </Section>

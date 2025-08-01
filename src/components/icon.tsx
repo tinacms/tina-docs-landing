@@ -4,6 +4,7 @@
 import * as BoxIcons from 'react-icons/bi';
 import { FaFacebookF, FaGithub, FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 import { AiFillInstagram } from 'react-icons/ai';
+import { Eye, PackageOpen, GitBranch } from 'lucide-react';
 import React from 'react';
 import { useLayout } from './layout/layout-context';
 
@@ -28,6 +29,9 @@ export const IconOptions = {
   FaXTwitter,
   FaYoutube,
   AiFillInstagram,
+  Eye,
+  PackageOpen,
+  GitBranch,
 };
 
 const iconColorClass: {

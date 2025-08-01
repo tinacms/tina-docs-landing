@@ -16,6 +16,8 @@ import Lenis from "lenis";
 import { CodeButton } from "@/components/ui/code-button";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 
+// TODO: Screen Resizer 
+
 function InformationBlock({
   title,
   description,
@@ -39,24 +41,28 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   });
 
   const [quartScreen, setQuartScreen] = useState(0);
+  const [screenHeight, setScreenHeight] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      
+      console.log("screenWidth", window.innerWidth);
+      console.log("4 divid inner height", window.innerHeight / 4);
+      setScreenHeight(window.innerHeight);
+      setScreenWidth(window.innerWidth);
       setQuartScreen(window.innerHeight / 4);
-      
     }
   }, []);
 
   const y = useTransform(
     scrollYProgress,
-    [0, 0.5, 1],
-    [0, quartScreen, quartScreen *1.1]
+    [0, 0.5, 0.9],
+    [0, screenHeight/2 - 500 - 16, (screenHeight - 500 - 16) * 0.9]
   );
 
   const x = useTransform(
     scrollYProgress,
-    [0, 0.5, 1],
+    [0, 0.5, 0.9],
     [0, 0, quartScreen * 1.5]
   );
 
@@ -65,10 +71,14 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   const boxesOpacityBase = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
   const boxesXBase = useTransform(
     scrollYProgress,
-    [0.7, 1],
-    [0, -quartScreen * 2]
+    [0.7, 0.9],
+    [0, screenWidth * -0.3]
   );
-  const boxesYBase = useTransform(scrollYProgress, [0.7, 1], [0, 25]);
+  const boxesYBase = useTransform(
+    scrollYProgress,
+    [0.7, 0.9],
+    [screenHeight * 0.3, screenHeight * 0.6]
+  );
 
   const boxesOpacity = useSpring(boxesOpacityBase, {
     stiffness: 300,
@@ -86,9 +96,9 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     restDelta: 0.001,
   });
 
-  // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
-  //   console.log("Progress:", latestValue);
-  // });
+  useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
+    console.log("Progress:", latestValue);
+  });
 
   const smoothness = 4;
   const wheelMultiplier = 0.8;

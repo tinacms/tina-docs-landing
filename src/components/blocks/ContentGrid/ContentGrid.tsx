@@ -43,9 +43,11 @@ const ContentGridItem = ({
           />
         </div>
       )}
-      <h3 className="text-3xl font-bold">{item.title}</h3>
+      <h3 className="text-3xl font-bold" data-tina-field={tinaField(item, "title")}>{item.title}</h3>
       </div>
-      <TinaMarkdown content={item.subtext} />
+      <div data-tina-field={tinaField(item, "subtext")}>
+        <TinaMarkdown content={item.subtext} />
+      </div>
       {item.links && (
         <Link
           href={item.links.url}

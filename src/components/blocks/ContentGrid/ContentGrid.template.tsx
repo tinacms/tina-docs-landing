@@ -1,4 +1,5 @@
 import { Template } from "tinacms";
+import { iconOptions } from "../../../constants";
 
 export const ContentGridSchema: Template = {
   name: "ContentGrid",
@@ -28,38 +29,7 @@ export const ContentGridSchema: Template = {
           name: "icon",
           label: "Icon",
           type: "string",
-          options: [
-            { label: "None", value: "" },
-            { label: "Tina", value: "Tina" },
-            { label: "Home", value: "BiHome" },
-            { label: "User", value: "BiUser" },
-            { label: "Settings", value: "BiCog" },
-            { label: "Star", value: "BiStar" },
-            { label: "Heart", value: "BiHeart" },
-            { label: "Bookmark", value: "BiBookmark" },
-            { label: "Check", value: "BiCheck" },
-            { label: "Plus", value: "BiPlus" },
-            { label: "Minus", value: "BiMinus" },
-            { label: "Search", value: "BiSearch" },
-            { label: "Download", value: "BiDownload" },
-            { label: "Upload", value: "BiUpload" },
-            { label: "Link", value: "BiLink" },
-            { label: "External Link", value: "BiLinkExternal" },
-            { label: "Arrow Right", value: "BiArrowRight" },
-            { label: "Arrow Left", value: "BiArrowLeft" },
-            { label: "Arrow Up", value: "BiArrowUp" },
-            { label: "Arrow Down", value: "BiArrowDown" },
-            { label: "Chevron Right", value: "BiChevronRight" },
-            { label: "Chevron Left", value: "BiChevronLeft" },
-            { label: "Chevron Up", value: "BiChevronUp" },
-            { label: "Chevron Down", value: "BiChevronDown" },
-            { label: "Facebook", value: "FaFacebookF" },
-            { label: "GitHub", value: "FaGithub" },
-            { label: "LinkedIn", value: "FaLinkedin" },
-            { label: "Twitter", value: "FaXTwitter" },
-            { label: "YouTube", value: "FaYoutube" },
-            { label: "Instagram", value: "AiFillInstagram" },
-          ],
+          options: iconOptions
         },
         {
           name: "links",

@@ -51,11 +51,13 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   }, []);
 
   const VERTICAL_OFFSET = screenHeight * 0.3; //Offset of image from top of screen
+  const TOP_PADDING_OFFSET = 48;
+
 
   const y = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0, quartScreen, quartScreen * 1.1]
+    [0, VERTICAL_OFFSET, VERTICAL_OFFSET]
   );
 
   const x = useTransform(
@@ -66,13 +68,13 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.1, 0.85]);
 
-  const boxesOpacityBase = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
+  const boxesOpacityBase = useTransform(scrollYProgress, [0.8, 0.9], [0, 1]);
   const boxesXBase = useTransform(
     scrollYProgress,
     [0.7, 1],
     [0, screenWidth * -0.3]
   );
-  const boxesYBase = useTransform(scrollYProgress, [0.7, 1], [0, quartScreen]);
+  const boxesYBase = useTransform(scrollYProgress, [0.7, 1], [ VERTICAL_OFFSET, VERTICAL_OFFSET+TOP_PADDING_OFFSET]);
 
   const boxesOpacity = useSpring(boxesOpacityBase, {
     stiffness: 300,
@@ -172,7 +174,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
             {/* Boxes underneath */}
             <motion.div
               style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-0"
+              className="absolute left-1/2 -translate-x-1/2 flex flex-col gap-4 z-0"
             >
               <InformationBlock
                 title={data?.informationBlock1?.title || "Undefined Title"}

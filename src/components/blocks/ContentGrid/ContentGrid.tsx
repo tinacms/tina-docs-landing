@@ -4,10 +4,12 @@ import Link from "next/link";
 import { tinaField } from "tinacms/dist/react";
 import { ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
+import { Icon } from "../../icon";
 
 type ContentGridItem = {
   title: string;
   subtext: TinaMarkdownContent;
+  icon?: string;
   links?: {
     label: string;
     url: string;
@@ -27,7 +29,22 @@ const ContentGridItem = ({
         onlyYBorder ? "border-y-[0.5px]" : "border-[0.5px]"
       }`}
     >
+      <div className="flex items-center gap-4">      
+        {item.icon && (
+        <div>
+          <Icon 
+            data={{ 
+              name: item.icon, 
+              color: "primary", 
+              size: "medium", 
+              style: "regular" 
+            }} 
+            tinaField={tinaField(item, "icon")}
+          />
+        </div>
+      )}
       <h3 className="text-3xl font-bold">{item.title}</h3>
+      </div>
       <TinaMarkdown content={item.subtext} />
       {item.links && (
         <Link

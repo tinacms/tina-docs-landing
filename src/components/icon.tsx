@@ -69,6 +69,10 @@ const iconColorClass: {
     regular: 'text-white opacity-80',
     circle: 'bg-white-400 dark:bg-white-500 text-white-50',
   },
+  primary: {
+    regular: 'text-[var(--primary)]',
+    circle: 'bg-[var(--primary)] text-white',
+  },
 };
 
 const iconSizeClass = {
@@ -97,7 +101,7 @@ export const Icon = ({ data, parentColor = '', className = '', tinaField = '' })
   //@ts-ignore
   const iconSizeClasses = typeof size === 'string' ? iconSizeClass[size] : iconSizeClass[Object.keys(iconSizeClass)[size]];
 
-  const iconColor = color ? (color === 'primary' ? theme!.color : color) : theme!.color;
+  const iconColor = color || theme!.color;
 
   if (style == 'circle') {
     return (

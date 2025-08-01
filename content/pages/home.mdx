@@ -1,6 +1,15 @@
 ---
 title: 'TinaDocs '
 blocks:
+  - title: Trusted By
+    logos:
+      - /uploads/tinaDocsLogo.svg
+      - /uploads/tinaDocsLogo.svg
+      - /uploads/tinaDocsLogo.svg
+      - /uploads/tinaDocsLogo.svg
+      - /uploads/tinaDocsLogo.svg
+      - /uploads/tinaDocsLogo.svg
+    _template: LogoCarousel
   - title: TinaDocs
     tagline: >-
       The lightweight, Git-first documentation starter with a visual editing
@@ -61,6 +70,19 @@ blocks:
           url: /some-link
     image: /uploads/posts/learning-about-mermaid.png
     _template: ContentGrid
+  - MediaBlock:
+      - features:
+          - title: Get Started
+            description: >
+              See how easy it is to kickstart your documentation start with
+              TinaCMS
+            link: /some-link
+        mediaContent:
+          - videoSrc: 'https://www.youtube.com/embed/sTVd8CYtXrA?si=0jMAjA_5ZTXJIuBC'
+            thumbnail: /uploads/posts/learning-to-blog.png
+            alt: alt
+            _template: youtubeVideo
+    _template: MediaFeature
   - MediaBlock:
       - isMediaOnRight: true
         features:

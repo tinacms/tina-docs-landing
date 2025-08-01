@@ -11,6 +11,7 @@ import { SeoInformation } from "./seo";
 import { BannerSchema } from "@/src/components/blocks/Banner/Banner.template";
 import { MediaFeatureBlockSchema } from "@/src/components/blocks/MediaFeature/MediaFeature.template";
 import { ContentGridSchema } from "@/src/components/blocks/ContentGrid/ContentGrid.template";
+import { LogoCarouselBlockSchema } from "@/src/components/blocks/LogoCarousel/LogoCarousel.template";
 
 const Page: Collection = {
   label: "Pages",
@@ -47,6 +48,7 @@ const Page: Collection = {
         BannerSchema,
         MediaFeatureBlockSchema,
         ContentGridSchema,
+        LogoCarouselBlockSchema,
         calloutBlockSchema,
         featureBlockSchema,
         statsBlockSchema,

@@ -6,7 +6,7 @@ export default function LogoGrid({ data }: { data: any }) {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
-    <Section className="grid grid-cols-6">
+    <Section className="max-w-5xl! grid grid-cols-6">
       <div className="col-span-2 border-[0.5px] border-sand-6 py-12 px-6 text-3xl font-semibold">
         {data.title}
       </div>

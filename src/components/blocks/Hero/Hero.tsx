@@ -24,7 +24,7 @@ function InformationBlock({
   description: TinaMarkdownContent;
 }) {
   return (
-    <div className="flex flex-col gap-4 border border-white/20 rounded-md p-4 bg-[#191918]/60 shadow-lg text-left 2xl:w-lg w-sm">
+    <div className="max-w-md flex flex-col gap-4 border border-white/20 rounded-md p-4 bg-[#191918]/60 shadow-lg text-left 2xl:w-lg w-sm">
       <h2 className="text-2xl font-semibold">{title}</h2>
       <TinaMarkdown content={description} />
     </div>
@@ -38,37 +38,52 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     offset: ["start start", "end end"],
   });
 
-  const [quartScreen, setQuartScreen] = useState(0);
+  const [screenHeight, setScreenHeight] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      
-      setQuartScreen(window.innerHeight / 4);
-      
-    }
+    const updateDimensions = () => {
+      if (typeof window !== "undefined") {
+        setScreenHeight(window.innerHeight);
+        setScreenWidth(window.innerWidth);
+      }
+    };
+
+    updateDimensions();
+
+    window.addEventListener("resize", updateDimensions);
+
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
+
+  const VERTICAL_OFFSET = screenHeight * 0.3; //Offset of image from top of screen
+  const TOP_PADDING_OFFSET = 48;
 
   const y = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0, quartScreen, quartScreen *1.1]
+    [0, VERTICAL_OFFSET, VERTICAL_OFFSET]
   );
 
   const x = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0, 0, quartScreen * 1.5]
+    [0, 0, screenWidth * 0.15]
   );
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.1, 0.85]);
 
-  const boxesOpacityBase = useTransform(scrollYProgress, [0.7, 0.9], [0, 1]);
+  const boxesOpacityBase = useTransform(scrollYProgress, [0.8, 0.9], [0, 1]);
   const boxesXBase = useTransform(
     scrollYProgress,
     [0.7, 1],
-    [0, -quartScreen * 2]
+    [0, screenWidth * -0.3]
   );
-  const boxesYBase = useTransform(scrollYProgress, [0.7, 1], [0, 25]);
+  const boxesYBase = useTransform(
+    scrollYProgress,
+    [0.7, 1],
+    [VERTICAL_OFFSET, VERTICAL_OFFSET + TOP_PADDING_OFFSET]
+  );
 
   const boxesOpacity = useSpring(boxesOpacityBase, {
     stiffness: 300,
@@ -86,19 +101,15 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     restDelta: 0.001,
   });
 
-  // useMotionValueEvent(scrollYProgress, "change", (latestValue) => {
-  //   console.log("Progress:", latestValue);
-  // });
-
-  const smoothness = 4;
-  const wheelMultiplier = 0.8;
+  const SMOOTHNESS = 4;
+  const WHEEL_MULTIPLIER = 0.8;
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: smoothness, // Higher = smoother/slower
+      duration: SMOOTHNESS, // Higher = smoother/slower
       easing: (t: number): number => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: wheelMultiplier, // Lower = slower scroll response
-      touchMultiplier: wheelMultiplier * 0.6, // Even slower on touch
+      wheelMultiplier: WHEEL_MULTIPLIER, // Lower = slower scroll response
+      touchMultiplier: WHEEL_MULTIPLIER * 0.6, // Even slower on touch
       infinite: false,
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -114,7 +125,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
 
   return (
     <Section
-      className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]"
+      className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449] bg-fixed"
       ref={heroComponentRef}
     >
       <div className="text-center max-w-7xl mx-auto px-6">
@@ -164,31 +175,42 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
           </div>
         )}
         {data?.media && (
-          <div className="relative min-h-[100vh]">
-            {/* Boxes underneath */}
-            <motion.div
-              style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 z-0"
-            >
-              <InformationBlock
-                title={data?.informationBlock1?.title || "Undefined Title"}
-                description={data?.informationBlock1?.desc}
-              />
-              <InformationBlock
-                title={data?.informationBlock2?.title || "Undefined Title"}
-                description={data?.informationBlock2?.desc}
-              />
-              <InformationBlock
-                title={data?.informationBlock3?.title || "Undefined Title"}
-                description={data?.informationBlock3?.desc}
-              />
-            </motion.div>
+          <>
+            <div className="hidden lg:block relative min-h-[100vh]  justify-center">
+              {/* Boxes underneath */}
+              <motion.div
+                style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
+                className="absolute left-1/2 -translate-x-1/2 flex flex-col gap-4 z-0"
+              >
+                <InformationBlock
+                  title={data?.informationBlock1?.title || "Undefined Title"}
+                  description={data?.informationBlock1?.desc}
+                />
+                <InformationBlock
+                  title={data?.informationBlock2?.title || "Undefined Title"}
+                  description={data?.informationBlock2?.desc}
+                />
+                <InformationBlock
+                  title={data?.informationBlock3?.title || "Undefined Title"}
+                  description={data?.informationBlock3?.desc}
+                />
+              </motion.div>
 
-            {/* Image above */}
-            <motion.div
-              className="mt-16 flex justify-center relative z-10"
-              style={{ y, x, scale }}
-            >
+              {/* Image above */}
+              <motion.div
+                className="mt-16 flex justify-center relative z-10"
+                style={{ y, x, scale }}
+              >
+                <Image
+                  src={data.media}
+                  alt={data.title || ""}
+                  width={1000}
+                  height={1000}
+                  className="border-10 border-[#252934] rounded-lg shadow-xl"
+                />
+              </motion.div>
+            </div>
+            <div className="block lg:hidden pt-16">
               <Image
                 src={data.media}
                 alt={data.title || ""}
@@ -196,8 +218,8 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 height={1000}
                 className="border-10 border-[#252934] rounded-lg shadow-xl"
               />
-            </motion.div>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </Section>

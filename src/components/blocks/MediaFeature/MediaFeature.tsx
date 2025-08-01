@@ -8,10 +8,7 @@ import { ChevronRightIcon, PlayIcon } from "lucide-react";
 import { useState } from "react";
 
 function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
-  const [showVideo, setShowVideo] = useState(false);
-
-  // Debug logging to see the actual data structure
-  console.log("YouTubeVideoPlayer mediaContent:", mediaContent);
+  const [showVideo, setShowVideo] = useState(false);  
 
   if (showVideo) {
     return (
@@ -58,8 +55,6 @@ function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
 }
 
 function renderMediaContent(mediaContent: any) {
-  // Debug logging to see the actual data structure
-  console.log("renderMediaContent called with:", mediaContent);
 
   if (mediaContent.__typename.includes("YoutubeVideo")) {
     return <YouTubeVideoPlayer mediaContent={mediaContent} />;
@@ -158,7 +153,6 @@ export default function MediaFeature({
 }: {
   data: PageBlocksMediaFeature;
 }) {
-  console.log(data);
   return (
     <div className="py-10">
       {data.MediaBlock &&

@@ -114,7 +114,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
 
   return (
     <Section
-      className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449]"
+      className="max-w-full bg-gradient-to-b from-[#111110] via-[#111110] to-[#182449] bg-fixed"
       ref={heroComponentRef}
     >
       <div className="text-center max-w-7xl mx-auto px-6">

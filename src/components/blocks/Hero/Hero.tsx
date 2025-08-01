@@ -42,15 +42,22 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   const [screenWidth, setScreenWidth] = useState(0);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setScreenHeight(window.innerHeight);
-      setScreenWidth(window.innerWidth);
-    }
+    const updateDimensions = () => {
+      if (typeof window !== "undefined") {
+        setScreenHeight(window.innerHeight);
+        setScreenWidth(window.innerWidth);
+      }
+    };
+
+    updateDimensions();
+
+    window.addEventListener("resize", updateDimensions);
+
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   const VERTICAL_OFFSET = screenHeight * 0.3; //Offset of image from top of screen
   const TOP_PADDING_OFFSET = 48;
-
 
   const y = useTransform(
     scrollYProgress,
@@ -72,7 +79,11 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     [0.7, 1],
     [0, screenWidth * -0.3]
   );
-  const boxesYBase = useTransform(scrollYProgress, [0.7, 1], [ VERTICAL_OFFSET, VERTICAL_OFFSET+TOP_PADDING_OFFSET]);
+  const boxesYBase = useTransform(
+    scrollYProgress,
+    [0.7, 1],
+    [VERTICAL_OFFSET, VERTICAL_OFFSET + TOP_PADDING_OFFSET]
+  );
 
   const boxesOpacity = useSpring(boxesOpacityBase, {
     stiffness: 300,

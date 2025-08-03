@@ -194,7 +194,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 alt={data.title || ""}
                 width={1000}
                 height={1000}
-                className="border-10 border-[#252934] rounded-lg shadow-xl"
+                className="border-10 border-[#F6F6F513] rounded-lg shadow-xl"
               />
             </motion.div>
           </div>

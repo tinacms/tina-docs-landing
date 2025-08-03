@@ -11,7 +11,7 @@ import { CallToAction } from "./call-to-action";
 import Banner from "./Banner/Banner";
 import MediaFeature from "./MediaFeature/MediaFeature";
 import ContentGrid from "./ContentGrid/ContentGrid";
-import LogoCarousel from "./LogoGrid/LogoCarousel";
+import LogoCarousel from "./LogoGrid/LogoGrid";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   if (!props.blocks) return null;

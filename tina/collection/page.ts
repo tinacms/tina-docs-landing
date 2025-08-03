@@ -11,7 +11,7 @@ import { SeoInformation } from "./seo";
 import { BannerSchema } from "@/src/components/blocks/Banner/Banner.template";
 import { MediaFeatureBlockSchema } from "@/src/components/blocks/MediaFeature/MediaFeature.template";
 import { ContentGridSchema } from "@/src/components/blocks/ContentGrid/ContentGrid.template";
-import { LogoGridBlockSchema } from "@/src/components/blocks/LogoGrid/LogoCarousel.template";
+import { LogoGridBlockSchema } from "@/src/components/blocks/LogoGrid/LogoGrid.template";
 
 const Page: Collection = {
   label: "Pages",

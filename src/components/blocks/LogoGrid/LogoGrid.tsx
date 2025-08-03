@@ -8,7 +8,7 @@ export default function LogoGrid({ data }: { data: any }) {
         {data.title}
       </div>
       {data.logos.map((item: any, index: number) => (
-        <div key={index} className={`md:border-r-[0.5px] border-sand-6 h-30 p-6 md:p-0 md:h-44 flex items-center justify-center ${(index < 4 && index >= 0) ? 'md:border-y-[0.5px]' : 'md:border-b-[0.5px]'} ${index === 4 ? 'md:border-l-[0.5px]' : ''}`}>
+        <div key={index} className={`md:border-r-[0.5px] border-sand-6 h-30 p-6 md:p-0 md:h-44 flex items-center justify-center ${(index < 4 && index >= 0) ? 'md:border-y-[0.5px]' : 'md:border-b-[0.5px]'} ${index === 4 ? 'md:border-l-[0.5px]' : ''} ${(index === 2 || index === 6) ? 'md:border-l-[0.5px] lg:border-l-0' : ''}`}>
           <Image src={item.image} alt={item.alt} width={100} height={100} className='grayscale'/>
         </div>
       ))}

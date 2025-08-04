@@ -10,6 +10,7 @@ import { DemoForm } from "../modals/book-demo";
 import { cn } from "@/lib/utils";
 import type { VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
+import { lenis } from "@/src/utils/lenis";
 
 const MODALS = {
   "book-demo": <DemoForm />,
@@ -50,13 +51,22 @@ export const ModalButton = ({
 
   useEffect(() => {
     if (isOpen) {
+      //Hacky way to disable scroll on the background because of lenis, but lenis.stop() doesnt work. 
+      document.body.setAttribute("data-lenis-prevent", "");
+      document.documentElement.setAttribute("data-lenis-prevent", "");
+
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.removeAttribute("data-lenis-prevent");
+      document.documentElement.removeAttribute("data-lenis-prevent");
+
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.removeAttribute("data-lenis-prevent");
+      document.documentElement.removeAttribute("data-lenis-prevent");
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -77,11 +87,7 @@ export const ModalButton = ({
       </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
-          onClose={closeModal}
-        >
+        <Dialog as="div" className="fixed inset-0 z-50 " onClose={closeModal}>
           <div className="min-h-screen px-4 py-12 text-center flex flex-col items-center justify-center">
             <TransitionChild
               as={Fragment}
@@ -104,7 +110,10 @@ export const ModalButton = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden text-left align-middle transition-all transform bg-white dark:bg-gray-950 shadow-xl rounded-xl">
+              <DialogPanel
+                className="relative w-full max-w-4xl max-h-[90vh] overflow-auto text-left align-middle transition-all transform bg-white dark:bg-gray-950 shadow-xl rounded-xl"
+                style={{ scrollBehavior: "smooth" }}
+              >
                 <button
                   type="button"
                   className="absolute top-4 right-4 z-10 p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"

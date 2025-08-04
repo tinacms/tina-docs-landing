@@ -35,7 +35,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(fontSans.variable, nunito.variable, lato.variable)}>
+    <html
+      lang="en"
+      className={cn(fontSans.variable, nunito.variable, lato.variable)}
+    >
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <VideoDialogProvider>
           {children}

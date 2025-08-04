@@ -101,7 +101,7 @@ const ContentGridItem = ({
           </div>
         )}
         <h3
-          className="text-3xl font-bold"
+          className="text-2xl font-bold"
           data-tina-field={tinaField(item, "title")}
         >
           {item.title}

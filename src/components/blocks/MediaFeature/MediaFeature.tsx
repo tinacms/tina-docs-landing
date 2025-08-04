@@ -10,9 +10,6 @@ import { useState } from "react";
 function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
   const [showVideo, setShowVideo] = useState(false);
 
-  // Debug logging to see the actual data structure
-  console.log("YouTubeVideoPlayer mediaContent:", mediaContent);
-
   if (showVideo) {
     return (
       <div className="relative w-full aspect-[16/9]">
@@ -58,9 +55,6 @@ function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
 }
 
 function renderMediaContent(mediaContent: any) {
-  // Debug logging to see the actual data structure
-  console.log("renderMediaContent called with:", mediaContent);
-
   if (mediaContent.__typename.includes("YoutubeVideo")) {
     return <YouTubeVideoPlayer mediaContent={mediaContent} />;
   }
@@ -135,19 +129,25 @@ function renderFeatures(features: any[]) {
 function mediaBlock(data: any) {
   const isMediaOnRight = data.isMediaOnRight;
 
+  const flexDirection = isMediaOnRight
+    ? "flex-col md:flex-row-reverse"
+    : "flex-col md:flex-row";
+
   return (
     <div className="w-full border-y-[0.5px] border-sand-6 px-10">
       <div
-        className={`max-w-7xl mx-auto border-x-[0.5px] border-sand-6 flex items-stretch justify-center ${
-          isMediaOnRight ? "flex-row-reverse" : "flex-row"
-        }`}
+        className={`max-w-7xl mx-auto border-x-[0.5px] border-sand-6 flex items-stretch justify-center ${flexDirection}`}
       >
-        <div className="w-3/5 p-20 bg-gradient-to-b from-transparent via-transparent to-[#182449]/75">
+        <div className="w-full md:w-3/5 p-20 bg-gradient-to-b from-transparent via-transparent to-[#182449]/75 flex items-center justify-center">
           {data?.mediaContent?.[0] &&
             renderMediaContent(data?.mediaContent?.[0])}
         </div>
-        <div className="w-[0.5px] bg-[#3B3A37]">{""}</div>
-        <div className="w-2/5 flex items-center">{renderFeatures(data.features || [])}</div>
+        <div className="h-[0.5px] w-full md:h-auto md:w-[0.5px] bg-[#3B3A37]">
+          {""}
+        </div>
+        <div className="w-full md:w-2/5 flex items-center">
+          {renderFeatures(data.features || [])}
+        </div>
       </div>
     </div>
   );
@@ -158,7 +158,6 @@ export default function MediaFeature({
 }: {
   data: PageBlocksMediaFeature;
 }) {
-  console.log(data);
   return (
     <div className="py-10">
       {data.MediaBlock &&

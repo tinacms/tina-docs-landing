@@ -158,7 +158,6 @@ export default function MediaFeature({
 }: {
   data: PageBlocksMediaFeature;
 }) {
-  console.log(data);
   return (
     <div className="py-10">
       {data.MediaBlock &&

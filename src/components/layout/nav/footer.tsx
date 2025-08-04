@@ -37,7 +37,7 @@ export const Footer = () => {
   return (
     <footer>
       <div className="border-y-[0.5px] border-sand-6 py-16 my-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto items-center px-10">
+        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto items-center px-10">
           <div className="flex flex-col gap-4">
             <Image
               src={footer?.lhs?.logo || ""}

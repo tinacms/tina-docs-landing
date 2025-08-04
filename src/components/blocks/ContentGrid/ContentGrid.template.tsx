@@ -1,4 +1,5 @@
 import { Template } from "tinacms";
+import { iconOptions } from "../../../constants";
 
 export const ContentGridSchema: Template = {
   name: "ContentGrid",
@@ -24,6 +25,12 @@ export const ContentGridSchema: Template = {
       fields: [
         { name: "title", label: "title", type: "string" },
         { name: "subtext", label: "Subtext", type: "rich-text" },
+        {
+          name: "icon",
+          label: "Icon",
+          type: "string",
+          options: iconOptions
+        },
         {
           name: "links",
           label: "Links",

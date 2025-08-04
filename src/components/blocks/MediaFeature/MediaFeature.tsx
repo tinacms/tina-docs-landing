@@ -86,7 +86,7 @@ function renderFeatures(features: any[]) {
     <div className="flex flex-col">
       {features.map((feature, index) => (
         <div
-          key={index}
+          key={`${feature.title || 'untitled'} - ${index}-${feature.description || ''}`}
           data-tina-field={tinaField(feature)}
           className={`p-8 ${
             features.length === 2 && index === 0
@@ -161,7 +161,11 @@ export default function MediaFeature({
   return (
     <div className="py-10">
       {data.MediaBlock &&
-        data.MediaBlock.map((block: any) => mediaBlock(block))}
+        data.MediaBlock.map((block: any, index: number) => (
+          <div key={`media-block-${index}-${block.isMediaOnRight ? 'right' : 'left'}`}>
+            {mediaBlock(block)}
+          </div>
+        ))}
     </div>
   );
 }

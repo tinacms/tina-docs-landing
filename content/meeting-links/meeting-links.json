@@ -1,0 +1,22 @@
+{
+  "bookingCard": [
+    {
+      "name": "Oceania & Asia",
+      "description": "Meet with Levi 🇦🇺",
+      "image": "/uploads/People/levi-circle_ca5za1.png",
+      "url": "https://meetings-eu1.hubspot.com/levi-jackson/tinacms-demo"
+    },
+    {
+      "name": "Europe + USA (East) + South America",
+      "description": "Meet with Jean 🇫🇷 🇬🇧",
+      "image": "/uploads/People/jean-circle_v4aiw5.png",
+      "url": "https://meetings-eu1.hubspot.com/jean-thirion"
+    },
+    {
+      "name": "USA (West) + Pacific",
+      "description": "Meet with Seth 🇺🇸",
+      "image": "/uploads/People/seth0d.png",
+      "url": "https://meetings-eu1.hubspot.com/meetings/seth-daily"
+    }
+  ]
+}

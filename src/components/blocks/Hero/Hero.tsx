@@ -131,7 +131,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
       <div className="text-center max-w-7xl mx-auto px-6">
         {data?.title && (
           <h1
-            className="text-balance text-4xl font-bold lg:text-6xl"
+            className="text-balance text-4xl md:text-5xl font-bold lg:text-6xl"
             data-tina-field={tinaField(data, "title")}
           >
             {data.title}
@@ -139,7 +139,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
         )}
         {data?.tagline && (
           <p
-            className="mt-4 text-lg text-muted-foreground max-w-md mx-auto"
+            className="mt-4 text:sm md:text-base lg:text-lg text-muted-foreground max-w-md mx-auto"
             data-tina-field={tinaField(data, "tagline")}
           >
             {data.tagline}
@@ -176,7 +176,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
         )}
         {data?.media && (
           <>
-            <div className="hidden lg:block relative min-h-[100vh]  justify-center">
+            <div className="hidden lg:block relative min-h-[100vh] lg:mx-10 justify-center">
               {/* Boxes underneath */}
               <motion.div
                 style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}

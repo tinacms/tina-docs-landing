@@ -29,21 +29,26 @@ const ContentGridItem = ({
         onlyYBorder ? "border-y-[0.5px]" : "border-[0.5px]"
       }`}
     >
-      <div className="flex items-center gap-4">      
+      <div className="flex items-center gap-3">
         {item.icon && (
-        <div>
-          <Icon 
-            data={{ 
-              name: item.icon, 
-              color: "primary", 
-              size: "medium", 
-              style: "regular" 
-            }} 
-            tinaField={tinaField(item, "icon")}
-          />
-        </div>
-      )}
-      <h3 className="text-3xl font-bold" data-tina-field={tinaField(item, "title")}>{item.title}</h3>
+          <div>
+            <Icon
+              data={{
+                name: item.icon,
+                color: "primary",
+                size: "small",
+                style: "regular",
+              }}
+              tinaField={tinaField(item, "icon")}
+            />
+          </div>
+        )}
+        <h3
+          className="text-3xl font-bold"
+          data-tina-field={tinaField(item, "title")}
+        >
+          {item.title}
+        </h3>
       </div>
       <div data-tina-field={tinaField(item, "subtext")}>
         <TinaMarkdown content={item.subtext} />

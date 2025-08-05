@@ -41,14 +41,14 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         {actions && actions.length > 0 && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 text-center items-center justify-center">
             {actions.map((action, index) => (
               <div
                 key={index}
                 className="rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
               >
                 {action.selectedIcon && (
-                  <div>
+                  <div className="flex items-center justify-center mb-4">
                     <Icon
                       data={{
                         name: action.selectedIcon,

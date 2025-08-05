@@ -43,10 +43,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         {actions && actions.length > 0 && (
           <div className="flex flex-wrap mb-5 gap-16 text-center items-center justify-center max-w-5xl mx-auto px-4">
             {actions.map((action, index) => (
-              <div
-                key={index}
-                className="rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-              >
+              <div key={index} className="rounded-lg p-6">
                 {action.selectedIcon && (
                   <div className="flex items-center justify-center mb-6">
                     <div className="bg-amber-1/20 rounded-full p-3">

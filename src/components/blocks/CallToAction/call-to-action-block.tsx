@@ -31,7 +31,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
             </h2>
             {description && (
               <div
-                className="max-w-lg mx-auto text-lg text-[#B5B3AD] px-8"
+                className="max-w-lg mx-auto text-lg text-muted-foreground px-8"
                 data-tina-field={tinaField(data, "description")}
               >
                 {description}
@@ -49,7 +49,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
               >
                 {action.selectedIcon && (
                   <div className="flex items-center justify-center mb-6">
-                    <div className="bg-sand-6 rounded-full p-3">
+                    <div className="bg-amber-1/20 rounded-full p-3">
                       <Icon
                         data={{
                           name: action.selectedIcon,
@@ -67,7 +67,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.title && (
                   <h3
-                    className="text-lg text-[#EEEEEC] font-semibold mb-4"
+                    className="text-lg text-foreground font-semibold mb-4"
                     data-tina-field={tinaField(data.actions[index], "title")}
                   >
                     {action.title}
@@ -75,7 +75,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.description && (
                   <p
-                    className="text-[#B5B3AD] mb-4 text-sm max-w-lg mx-auto"
+                    className="text-muted-foreground mb-4 text-sm max-w-lg mx-auto"
                     data-tina-field={tinaField(
                       data.actions[index],
                       "description"
@@ -92,7 +92,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         <div className="text-center">
           <ModalButton
             modal="book-demo"
-            className="bg-[#CA3C11] text-white px-8 py-3 rounded-lg transition-colors cursor-pointer"
+            className="bg-primary text-white px-8 py-3 rounded-lg transition-colors cursor-pointer"
             data-tina-field={tinaField(data, "buttonText")}
           >
             {buttonText}

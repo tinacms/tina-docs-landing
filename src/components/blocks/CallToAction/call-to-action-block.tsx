@@ -31,7 +31,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
             </h2>
             {description && (
               <div
-                className="text-xl max-w-3xl mx-auto"
+                className="max-w-3xl mx-auto text-lg text-[#B5B3AD]"
                 data-tina-field={tinaField({ description })}
               >
                 {description}
@@ -45,7 +45,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
             {actions.map((action, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
+                className="rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
               >
                 {action.selectedIcon && (
                   <div>
@@ -61,7 +61,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.title && (
                   <h3
-                    className="text-xl font-semibold text-gray-900 mb-2"
+                    className="text-lg text-[#EEEEEC] font-semibold mb-2"
                     data-tina-field={tinaField({
                       actions: index,
                       title: action.title,
@@ -72,7 +72,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.description && (
                   <p
-                    className="text-gray-600 mb-4"
+                    className="text-[#B5B3AD] mb-4 text-sm"
                     data-tina-field={tinaField({
                       actions: index,
                       description: action.description,
@@ -88,7 +88,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
 
         <div className="text-center">
           <Button
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors"
+            className="bg-[#CA3C11] text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors cursor-pointer"
             data-tina-field={tinaField({ buttonText })}
           >
             {buttonText}

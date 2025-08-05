@@ -25,14 +25,14 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
           <div className="text-center mb-4">
             <h2
               className="text-5xl font-bold mb-10"
-              data-tina-field={tinaField({ title })}
+              data-tina-field={tinaField(data, "title")}
             >
               {title}
             </h2>
             {description && (
               <div
                 className="max-w-[512px] mx-auto text-lg text-[#B5B3AD]"
-                data-tina-field={tinaField({ description })}
+                data-tina-field={tinaField(data, "description")}
               >
                 {description}
               </div>
@@ -57,6 +57,10 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                           size: "xs",
                           style: "regular",
                         }}
+                        tinaField={tinaField(
+                          data.actions[index],
+                          "selectedIcon"
+                        )}
                       />
                     </div>
                   </div>
@@ -64,10 +68,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 {action.title && (
                   <h3
                     className="text-lg text-[#EEEEEC] font-semibold mb-4"
-                    data-tina-field={tinaField({
-                      actions: index,
-                      title: action.title,
-                    })}
+                    data-tina-field={tinaField(data.actions[index], "title")}
                   >
                     {action.title}
                   </h3>
@@ -75,10 +76,10 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 {action.description && (
                   <p
                     className="text-[#B5B3AD] mb-4 text-sm max-w-[512px] mx-auto"
-                    data-tina-field={tinaField({
-                      actions: index,
-                      description: action.description,
-                    })}
+                    data-tina-field={tinaField(
+                      data.actions[index],
+                      "description"
+                    )}
                   >
                     {action.description}
                   </p>
@@ -92,7 +93,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
           <ModalButton
             modal="book-demo"
             className="bg-[#CA3C11] text-white px-8 py-3 rounded-lg transition-colors cursor-pointer"
-            data-tina-field={tinaField({ buttonText })}
+            data-tina-field={tinaField(data, "buttonText")}
           >
             {buttonText}
           </ModalButton>

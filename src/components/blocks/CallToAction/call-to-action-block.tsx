@@ -1,6 +1,6 @@
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
-import { Button } from "../../ui/button";
+import { ModalButton } from "../../ui/modalButton";
 import { Icon } from "../../icon";
 
 interface Action {
@@ -87,12 +87,13 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         <div className="text-center">
-          <Button
+          <ModalButton
+            modal="book-demo"
             className="bg-[#CA3C11] text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors cursor-pointer"
             data-tina-field={tinaField({ buttonText })}
           >
             {buttonText}
-          </Button>
+          </ModalButton>
         </div>
       </div>
     </section>

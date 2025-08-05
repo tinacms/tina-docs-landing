@@ -49,14 +49,16 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
               >
                 {action.selectedIcon && (
                   <div className="flex items-center justify-center mb-4">
-                    <Icon
-                      data={{
-                        name: action.selectedIcon,
-                        color: "primary",
-                        size: "small",
-                        style: "regular",
-                      }}
-                    />
+                    <div className="bg-[#FBFBEB23] rounded-full p-3">
+                      <Icon
+                        data={{
+                          name: action.selectedIcon,
+                          color: "primary",
+                          size: "small",
+                          style: "regular",
+                        }}
+                      />
+                    </div>
                   </div>
                 )}
                 {action.title && (
@@ -89,7 +91,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         <div className="text-center">
           <ModalButton
             modal="book-demo"
-            className="bg-[#CA3C11] text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors cursor-pointer"
+            className="bg-[#CA3C11] text-white px-8 py-3 rounded-lg transition-colors cursor-pointer"
             data-tina-field={tinaField({ buttonText })}
           >
             {buttonText}

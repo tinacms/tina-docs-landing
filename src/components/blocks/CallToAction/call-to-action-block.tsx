@@ -22,9 +22,9 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
     <section className="py-16">
       <div className="container mx-auto px-4">
         {title && (
-          <div className="text-center mb-12">
+          <div className="text-center mb-4">
             <h2
-              className="text-4xl font-bold mb-4"
+              className="text-5xl font-bold mb-10"
               data-tina-field={tinaField({ title })}
             >
               {title}
@@ -48,7 +48,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 className="rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
               >
                 {action.selectedIcon && (
-                  <div className="flex items-center justify-center mb-4">
+                  <div className="flex items-center justify-center mb-6">
                     <div className="bg-[#FBFBEB23] rounded-full p-3">
                       <Icon
                         data={{
@@ -63,7 +63,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.title && (
                   <h3
-                    className="text-lg text-[#EEEEEC] font-semibold mb-2"
+                    className="text-lg text-[#EEEEEC] font-semibold mb-4"
                     data-tina-field={tinaField({
                       actions: index,
                       title: action.title,

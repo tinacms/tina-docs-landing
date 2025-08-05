@@ -54,7 +54,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                         data={{
                           name: action.selectedIcon,
                           color: "sandlight",
-                          size: "small",
+                          size: "xs",
                           style: "regular",
                         }}
                       />

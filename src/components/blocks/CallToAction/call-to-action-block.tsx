@@ -41,9 +41,12 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         {actions && actions.length > 0 && (
-          <div className="flex flex-wrap mb-5 gap-16 text-center items-center justify-center max-w-5xl mx-auto px-4">
+          <div className="flex mb-5 gap-16 text-center items-center justify-center max-w-5xl mx-auto px-4">
             {actions.map((action, index) => (
-              <div key={index} className="rounded-lg p-6">
+              <div
+                key={index}
+                className="rounded-lg p-6 flex flex-col items-center flex-1 max-w-xs"
+              >
                 {action.selectedIcon && (
                   <div className="flex items-center justify-center mb-6">
                     <div className="bg-amber-1/20 rounded-full p-3">
@@ -86,7 +89,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
           </div>
         )}
 
-        <div className="text-center">
+        <div className="flex justify-center">
           <ModalButton
             modal="book-demo"
             className="bg-primary text-white px-8 py-3 rounded-lg transition-colors cursor-pointer"

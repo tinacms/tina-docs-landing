@@ -20,6 +20,13 @@ export const CallToActionBlockSchema: Template = {
       type: "object",
       label: "Actions",
       name: "actions",
+      ui: {
+        itemProps: (item) => {
+          return {
+            label: item.title || "Untitled",
+          };
+        },
+      },
       list: true,
       fields: [
         {

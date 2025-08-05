@@ -12,6 +12,7 @@ import Banner from "./Banner/Banner";
 import MediaFeature from "./MediaFeature/MediaFeature";
 import ContentGrid from "./ContentGrid/ContentGrid";
 import LogoCarousel from "./LogoGrid/LogoGrid";
+import { CallToActionBlock } from "./CallToAction/call-to-action-block";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   if (!props.blocks) return null;
@@ -54,6 +55,8 @@ const Block = (block: PageBlocks) => {
       return <ContentGrid data={block} />;
     case "PageBlocksLogoGrid":
       return <LogoCarousel data={block} />;
+    case "PageBlocksCallToAction":
+      return <CallToActionBlock data={block} />;
     default:
       return null;
   }

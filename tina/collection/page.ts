@@ -12,6 +12,7 @@ import { BannerSchema } from "@/src/components/blocks/Banner/Banner.template";
 import { MediaFeatureBlockSchema } from "@/src/components/blocks/MediaFeature/MediaFeature.template";
 import { ContentGridSchema } from "@/src/components/blocks/ContentGrid/ContentGrid.template";
 import { LogoGridBlockSchema } from "@/src/components/blocks/LogoGrid/LogoGrid.template";
+import { CallToActionBlockSchema } from "@/src/components/blocks/CallToAction/call-to-action-block.template";
 
 const Page: Collection = {
   label: "Pages",
@@ -56,6 +57,7 @@ const Page: Collection = {
         contentBlockSchema,
         testimonialBlockSchema,
         videoBlockSchema,
+        CallToActionBlockSchema,
       ],
     },
   ],

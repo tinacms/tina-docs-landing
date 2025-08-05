@@ -75,7 +75,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.description && (
                   <p
-                    className="text-[#B5B3AD] mb-4 text-sm max-w-[512px] mx-auto"
+                    className="text-[#B5B3AD] mb-4 text-sm max-w-lg mx-auto"
                     data-tina-field={tinaField(
                       data.actions[index],
                       "description"

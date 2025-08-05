@@ -31,7 +31,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
             </h2>
             {description && (
               <div
-                className="max-w-[512px] mx-auto text-lg text-[#B5B3AD] px-8"
+                className="max-w-lg mx-auto text-lg text-[#B5B3AD] px-8"
                 data-tina-field={tinaField(data, "description")}
               >
                 {description}

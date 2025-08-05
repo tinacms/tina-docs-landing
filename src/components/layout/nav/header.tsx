@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useLayout } from "../layout-context";
 import { Menu, X } from "lucide-react";
 import { Button } from "../../ui/button";
+import { ModalButton } from "../../ui/modalButton";
 import { DropdownButton } from "../../ui/dropdownButton";
 import { GitHubButton } from "../../ui/githubButton";
 import { SearchBar } from "../../ui/searchBar";
@@ -14,11 +15,22 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
   const template = navObject.__typename;
 
   switch (template) {
+    case "GlobalHeaderNavObjectsDemoModal":
+      return (
+        <ModalButton
+          variant={navObject.variant || "default"}
+          size="default"
+          modal="book-demo"
+        >
+          {navObject.label}
+        </ModalButton>
+      );
+
     case "GlobalHeaderNavObjectsNavLink":
       return (
         <Link
           href={navObject.href || "#"}
-          className="text-muted-foreground hover:text-accent-foreground block duration-150"
+          className="text-neutral-text hover:text-accent-foreground block duration-150"
         >
           <span>{navObject.label}</span>
         </Link>
@@ -73,7 +85,6 @@ export const Header = () => {
   );
 
   const navObjects = header.navObjects!;
-
 
   const [menuState, setMenuState] = React.useState(false);
   return (

@@ -31,7 +31,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
             </h2>
             {description && (
               <div
-                className="max-w-3xl mx-auto text-lg text-[#B5B3AD]"
+                className="max-w-[512px] mx-auto text-lg text-[#B5B3AD]"
                 data-tina-field={tinaField({ description })}
               >
                 {description}
@@ -41,7 +41,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         {actions && actions.length > 0 && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 text-center items-center justify-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 text-center items-center justify-center max-w-[1024px] mx-auto">
             {actions.map((action, index) => (
               <div
                 key={index}
@@ -53,7 +53,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                       <Icon
                         data={{
                           name: action.selectedIcon,
-                          color: "primary",
+                          color: "sandlight",
                           size: "small",
                           style: "regular",
                         }}
@@ -74,7 +74,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.description && (
                   <p
-                    className="text-[#B5B3AD] mb-4 text-sm"
+                    className="text-[#B5B3AD] mb-4 text-sm max-w-[512px] mx-auto"
                     data-tina-field={tinaField({
                       actions: index,
                       description: action.description,

@@ -92,6 +92,10 @@ const iconColorClass: {
     regular: "text-[var(--primary)]",
     circle: "bg-[var(--primary)] text-white",
   },
+  sandlight: {
+    regular: "text-[#B5B3AD]",
+    circle: "bg-[#B5B3AD] text-white",
+  },
 };
 
 const iconSizeClass = {

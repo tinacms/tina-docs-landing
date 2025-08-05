@@ -1,7 +1,7 @@
 import React from "react";
 import { tinaField } from "tinacms/dist/react";
-import { ModalButton } from "../../ui/modalButton";
 import { Icon } from "../../icon";
+import { ModalButton } from "../../ui/modalButton";
 
 interface Action {
   title?: string;
@@ -41,7 +41,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         {actions && actions.length > 0 && (
-          <div className="flex flex-wrap mb-5 gap-16 text-center items-center justify-center max-w-[1124px] mx-auto px-4">
+          <div className="flex flex-wrap mb-5 gap-16 text-center items-center justify-center max-w-5xl mx-auto px-4">
             {actions.map((action, index) => (
               <div
                 key={index}
@@ -49,7 +49,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
               >
                 {action.selectedIcon && (
                   <div className="flex items-center justify-center mb-6">
-                    <div className="bg-[#FBFBEB23] rounded-full p-3">
+                    <div className="bg-sand-6 rounded-full p-3">
                       <Icon
                         data={{
                           name: action.selectedIcon,

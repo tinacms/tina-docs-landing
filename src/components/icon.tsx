@@ -1,6 +1,7 @@
 "use client";
-//TODO: Fix Types in this file
-//
+import { Eye, GitBranch, Hammer, PackageOpen, Trophy } from "lucide-react";
+import React from "react";
+import { AiFillInstagram } from "react-icons/ai";
 import * as BoxIcons from "react-icons/bi";
 import {
   FaFacebookF,
@@ -10,9 +11,6 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { MdOutlineTableChart } from "react-icons/md";
-import { AiFillInstagram } from "react-icons/ai";
-import { Eye, PackageOpen, GitBranch, Trophy, Hammer } from "lucide-react";
-import React from "react";
 import { useLayout } from "./layout/layout-context";
 
 export const IconOptions = {

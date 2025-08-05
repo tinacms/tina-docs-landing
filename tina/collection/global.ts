@@ -100,6 +100,26 @@ const ctaButton = {
   ],
 };
 
+const demoModalButton = {
+  name: "demoModal",
+  label: "Demo Modal Button",
+  type: "object",
+  ui: {
+    itemProps: () => {
+      return { label: `🔍 Demo Modal Button` };
+    },
+  },
+  fields: [
+    { name: "label", type: "string", label: "Label" },
+    {
+      name: "variant",
+      type: "string",
+      label: "Variant",
+      options: buttonVariantsArray,
+    },
+  ],
+};
+
 const Global: Collection = {
   label: "Global",
   name: "global",
@@ -125,7 +145,14 @@ const Global: Collection = {
           label: "Navigation Objects",
           name: "navObjects",
           list: true,
-          templates: [navLink, navDropdown, searchBar, githubButton, ctaButton],
+          templates: [
+            navLink,
+            navDropdown,
+            searchBar,
+            githubButton,
+            ctaButton,
+            demoModalButton,
+          ],
         },
       ],
     },

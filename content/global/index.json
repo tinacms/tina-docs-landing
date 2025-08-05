@@ -8,58 +8,45 @@
     "logo": "/uploads/tinaDocsLogo.svg",
     "navObjects": [
       {
+        "href": "https://tina-docs-1msuzf5j4-tinacms.vercel.app/docs",
         "label": "Documentation",
-        "links": [
-          {
-            "link": "/getting-started",
-            "label": "Getting Started"
-          },
-          {
-            "link": "/features",
-            "label": "Features"
-          },
-          {
-            "link": "/api-reference",
-            "label": "API Reference"
-          }
-        ],
-        "_template": "navDropdown"
+        "_template": "navLink"
       },
       {
-        "label": "Examples",
-        "links": [
-          {
-            "link": "/tinaCMS",
-            "label": "TinaCMS"
-          },
-          {
-            "link": "/EagleEye",
-            "label": "EagleEye"
-          },
-          {
-            "link": "/TimePro",
-            "label": "TimePro"
-          }
-        ],
-        "_template": "navDropdown"
+        "href": "/pricing",
+        "label": "Cloud Pricing",
+        "_template": "navLink"
       },
       {
         "label": "Community",
         "links": [
           {
-            "link": "/1",
-            "label": "Smashing Mag"
+            "link": "/showcase",
+            "label": "Showcase"
           },
           {
-            "link": "/2",
-            "label": "Unity"
+            "link": "/roadmap",
+            "label": "Roadmap"
+          },
+          {
+            "link": "/events",
+            "label": "Events"
+          },
+          {
+            "link": "/docs/support",
+            "label": "Support"
+          },
+          {
+            "link": "https://discord.com/invite/zumN63Ybpf",
+            "label": "Discord"
           }
         ],
         "_template": "navDropdown"
       },
       {
-        "label": "Search",
-        "_template": "searchBar"
+        "href": "/enterprise",
+        "label": "Enterprise",
+        "_template": "navLink"
       },
       {
         "_template": "githubButton"
@@ -67,10 +54,11 @@
       {
         "label": "Book a Demo",
         "variant": "outline",
-        "_template": "ctaButton"
+        "_template": "demoModal"
       },
       {
         "label": "Get Started",
+        "url": "https://app.tina.io/quickstart",
         "variant": "default",
         "_template": "ctaButton"
       }

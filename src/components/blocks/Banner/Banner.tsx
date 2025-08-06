@@ -23,9 +23,9 @@ export default function Banner({ data }: { data: any }) {
       <div className="flex flex-col max-w-2xl">
         <div className="flex text-4xl md:text-5xl pb-6">
           <p className="italic">
-            <span className="text-orange-500 font-bold">"</span>
+            <span className="text-primary font-bold">"</span>
             {formatQuoteWithBrackets(data.quote)}
-            <span className="text-orange-500 font-bold">"</span>
+            <span className="text-primary font-bold">"</span>
           </p>
         </div>
         <p className="text-lg md:text-xl">{data.author}</p>

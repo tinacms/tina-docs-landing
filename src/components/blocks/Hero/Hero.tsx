@@ -54,8 +54,8 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
     offset: ["start start", "end end"],
   });
 
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    console.log('ScrollYProgress: ', latest);
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("ScrollYProgress: ", latest);
   });
 
   const [screenHeight, setScreenHeight] = useState(0);
@@ -233,14 +233,17 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 />
               </motion.div>
             </div>
-            <div className="block lg:hidden pt-16">
-              <Image
-                src={data.media}
-                alt={data.title || ""}
-                width={1000}
-                height={1000}
-                className="border-10 border-[#F6F6F513] rounded-lg shadow-xl"
-              />
+
+            <div className="block lg:hidden pt-16 px-10 min-h-[30vh] md:min-h-[50vh] overflow-hidden p-10">
+              <div className="absolute left-1/2 -translate-x-1/2 bg-[#252934] rounded-lg border-[0.5px] border-sand-6 shadow-xl p-2 w-[calc(100%-2rem)] max-w-2xl">
+                <Image
+                  src={data.media}
+                  alt={data.title || ""}
+                  width={1000}
+                  height={1000}
+                  className=" border-[#F6F6F513] rounded-lg shadow-xl "
+                />
+              </div>
             </div>
           </>
         )}

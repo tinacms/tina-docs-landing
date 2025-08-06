@@ -41,7 +41,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         {actions && actions.length > 0 && (
-          <div className="flex mb-5 gap-16 text-center items-center justify-center max-w-5xl mx-auto px-4">
+          <div className="flex mb-5 gap-16 text-center justify-center max-w-5xl mx-auto px-4">
             {actions.map((action, index) => (
               <div
                 key={index}
@@ -75,7 +75,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
                 )}
                 {action.description && (
                   <p
-                    className="text-muted-foreground mb-4 text-sm mx-auto truncate max-w-fit"
+                    className="text-muted-foreground mb-4 text-sm mx-auto"
                     data-tina-field={tinaField(
                       data.actions[index],
                       "description"
@@ -89,7 +89,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
           </div>
         )}
 
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <ModalButton
             modal="book-demo"
             className="bg-primary text-white px-8 py-3 rounded-lg transition-colors cursor-pointer"

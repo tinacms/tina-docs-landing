@@ -15,17 +15,33 @@ import {
 import Lenis from "lenis";
 import { CodeButton } from "@/components/ui/code-button";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { Icon } from "../../icon";
 
 function InformationBlock({
   title,
   description,
+  icon,
 }: {
   title: string;
   description: TinaMarkdownContent;
+  icon?: string;
 }) {
   return (
     <div className="max-w-md flex flex-col gap-4 border border-white/20 rounded-md p-4 bg-[#191918]/60 shadow-lg text-left 2xl:w-lg w-sm">
-      <h2 className="text-2xl font-semibold">{title}</h2>
+      <div className="flex items-center gap-2">
+        {icon && (
+          <Icon
+            data={{
+              name: icon,
+              color: "primary",
+              size: "small",
+              style: "regular",
+            }}
+          />
+        )}
+        <h2 className="text-2xl font-semibold">{title}</h2>
+      </div>
+
       <TinaMarkdown content={description} />
     </div>
   );
@@ -36,6 +52,10 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
   const { scrollYProgress } = useScroll({
     target: heroComponentRef,
     offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("ScrollYProgress: ", latest);
   });
 
   const [screenHeight, setScreenHeight] = useState(0);
@@ -185,14 +205,17 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 <InformationBlock
                   title={data?.informationBlock1?.title || "Undefined Title"}
                   description={data?.informationBlock1?.desc}
+                  icon={data?.informationBlock1?.icon || undefined}
                 />
                 <InformationBlock
                   title={data?.informationBlock2?.title || "Undefined Title"}
                   description={data?.informationBlock2?.desc}
+                  icon={data?.informationBlock2?.icon || undefined}
                 />
                 <InformationBlock
                   title={data?.informationBlock3?.title || "Undefined Title"}
                   description={data?.informationBlock3?.desc}
+                  icon={data?.informationBlock3?.icon || undefined}
                 />
               </motion.div>
 
@@ -210,14 +233,17 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 />
               </motion.div>
             </div>
-            <div className="block lg:hidden pt-16">
-              <Image
-                src={data.media}
-                alt={data.title || ""}
-                width={1000}
-                height={1000}
-                className="border-10 border-[#F6F6F513] rounded-lg shadow-xl"
-              />
+
+            <div className="block lg:hidden pt-16 px-10 min-h-[30vh] md:min-h-[50vh] overflow-hidden p-10">
+              <div className="absolute left-1/2 -translate-x-1/2 bg-[#252934] rounded-lg border-[0.5px] border-sand-6 shadow-xl p-2 w-[calc(100%-2rem)] max-w-2xl">
+                <Image
+                  src={data.media}
+                  alt={data.title || ""}
+                  width={1000}
+                  height={1000}
+                  className=" border-[#F6F6F513] rounded-lg shadow-xl "
+                />
+              </div>
             </div>
           </>
         )}

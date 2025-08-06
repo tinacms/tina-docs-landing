@@ -1,3 +1,4 @@
+import { iconOptions } from "@/src/constants";
 import { Template } from "tinacms";
 
 export const actionsButtonTemplateFields = {
@@ -71,7 +72,7 @@ export const HeroBlockSchema: Template = {
   name: "Hero",
   label: "Hero",
   ui: {
-    previewSrc: '/blocks/hero.png',
+    previewSrc: "/blocks/hero.png",
   },
   fields: [
     { name: "title", type: "string", label: "Title" },
@@ -106,7 +107,12 @@ export const HeroBlockSchema: Template = {
       fields: [
         { name: "title", type: "string", label: "Title" },
         { name: "desc", type: "rich-text", label: "Description" },
-        { name: "icon", type: "image", label: "Icon" },
+        {
+          name: "icon",
+          label: "Icon",
+          type: "string",
+          options: iconOptions,
+        },
       ],
     },
     {
@@ -116,7 +122,12 @@ export const HeroBlockSchema: Template = {
       fields: [
         { name: "title", type: "string", label: "Title" },
         { name: "desc", type: "rich-text", label: "Description" },
-        { name: "icon", type: "image", label: "Icon" },
+        {
+          name: "icon",
+          label: "Icon",
+          type: "string",
+          options: iconOptions,
+        },
       ],
     },
     {
@@ -126,7 +137,12 @@ export const HeroBlockSchema: Template = {
       fields: [
         { name: "title", type: "string", label: "Title" },
         { name: "desc", type: "rich-text", label: "Description" },
-        { name: "icon", type: "image", label: "Icon" },
+        {
+          name: "icon",
+          label: "Icon",
+          type: "string",
+          options: iconOptions,
+        },
       ],
     },
   ],

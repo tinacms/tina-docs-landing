@@ -200,7 +200,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
               {/* Boxes underneath */}
               <motion.div
                 style={{ x: boxesX, y: boxesY, opacity: boxesOpacity }}
-                className="absolute left-1/2 -translate-x-1/2 flex flex-col gap-4 z-0"
+                className="absolute left-1/2 -translate-x-1/2 flex flex-col gap-12 z-0"
               >
                 <InformationBlock
                   title={data?.informationBlock1?.title || "Undefined Title"}
@@ -224,13 +224,29 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
                 className="mt-16 flex justify-center relative z-10"
                 style={{ y, x, scale }}
               >
-                <Image
-                  src={data.media}
-                  alt={data.title || ""}
-                  width={1000}
-                  height={1000}
-                  className="border-10 border-[#252934] rounded-lg shadow-xl"
-                />
+                <div className="relative inline-block">
+                  {/* Main image - top layer (base position) */}
+                  <Image
+                    src={data.media}
+                    alt={data.title || ""}
+                    width={2400}
+                    height={1350}
+                    quality={100}
+                    className="border-[0.5px] border-[#252934] rounded-lg shadow-[#182449] shadow-md relative w-3xl left-24 z-10"
+                  />
+
+                  {/* Background image - bottom layer, positioned down and to the left */}
+                  {data?.mediaBackground && (
+                    <Image
+                      src={data.mediaBackground || ""}
+                      alt={data.title || ""}
+                      width={2400}
+                      height={1350}
+                      quality={100}
+                      className="absolute top-20 -left-24 border-[0.5px] border-[#252934] rounded-lg shadow-[#182449] shadow-md z-0"
+                    />
+                  )} 
+                </div>
               </motion.div>
             </div>
 

@@ -101,6 +101,11 @@ export const HeroBlockSchema: Template = {
       label: "Media",
     },
     {
+      name: "mediaBackground",
+      type: "image",
+      label: "Media Background",
+    },
+    {
       name: "informationBlock1",
       type: "object",
       label: "Information Block 1",

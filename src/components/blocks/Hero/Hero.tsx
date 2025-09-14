@@ -151,7 +151,7 @@ export default function Hero({ data }: { data?: PageBlocksHero }) {
       <div className="text-center max-w-7xl mx-auto px-6">
         {data?.title && (
           <h1
-            className="text-balance text-4xl md:text-5xl font-bold lg:text-6xl"
+            className="text-balance text-4xl md:text-5xl font-bold lg:text-6xl max-w-xl text-center mx-auto"
             data-tina-field={tinaField(data, "title")}
           >
             {data.title}

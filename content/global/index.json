@@ -70,8 +70,8 @@
       "logo": "/uploads/tinaDocsLogo.svg",
       "subtext": "The modern way to build and manage documentation",
       "button": {
-        "label": "Subscribe",
-        "url": "/doesnt-go-anywhere-yet"
+        "label": "",
+        "url": ""
       }
     },
     "itemList": [
@@ -80,7 +80,7 @@
         "links": [
           {
             "label": "Features",
-            "url": "/feat"
+            "url": "/tinadocs/docs/tinadocs-features/feature-list"
           },
           {
             "label": "Pricing",
@@ -92,7 +92,7 @@
           },
           {
             "label": "Templates",
-            "url": "/tea"
+            "url": "https://app.tina.io"
           }
         ]
       },
@@ -101,15 +101,15 @@
         "links": [
           {
             "label": "Documentation",
-            "url": "/doc"
+            "url": "/tinadocs/docs"
           },
           {
             "label": "API Reference",
-            "url": "/api"
+            "url": "/tinadocs/docs/tinadocs-features/openapi-spec-docs"
           },
           {
             "label": "Guides",
-            "url": "/guide"
+            "url": "https://tina.io/docs/beginner-tutorials/tutorial-overview"
           },
           {
             "label": "Blog",
@@ -122,19 +122,11 @@
         "links": [
           {
             "label": "About",
-            "url": "/abt"
-          },
-          {
-            "label": "Careers",
-            "url": "/car"
-          },
-          {
-            "label": "Contact",
-            "url": "/cont"
+            "url": "/about"
           },
           {
             "label": "Support",
-            "url": "/spt"
+            "url": "https://tina.io/docs/support"
           }
         ]
       }

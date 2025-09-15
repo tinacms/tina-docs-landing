@@ -19,7 +19,7 @@ const FooterList = ({
       <h3 className="text-lg font-bold">{title}</h3>
       <div className="flex flex-col gap-4 text-base text-muted-foreground">
         {links?.map((link) => (
-          <Link href={link?.url || ""} key={link?.label || ""}>
+          <Link href={link?.url || ""} key={link?.label || ""} className="hover:text-accent-foreground duration-150 transition-colors">
             {link?.label}
           </Link>
         ))}
@@ -37,7 +37,7 @@ export const Footer = () => {
   return (
     <footer>
       <div className="border-y-[0.5px] border-sand-6 py-16 my-4">
-        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto items-center px-10">
+        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto  px-10">
           <div className="flex flex-col gap-4">
             <Image
               src={footer?.lhs?.logo || ""}
@@ -48,11 +48,11 @@ export const Footer = () => {
             <p className="text-sm text-muted-foreground">
               {footer?.lhs?.subtext}
             </p>
-            <Button variant="outline" size="lg" className="w-fit">
-              <a href={footer?.lhs?.button?.url || ""}>
+            {footer?.lhs?.button?.label && footer?.lhs?.button?.url && <Button variant="outline" size="lg" className="w-fit">
+              <a href={footer?.lhs?.button?.url || ""} className="hover:text-accent-foreground duration-150 transition-colors">
                 {footer?.lhs?.button?.label}
               </a>
-            </Button>
+            </Button>}
           </div>
           {footer?.itemList?.map((item, index) => (
             <FooterList

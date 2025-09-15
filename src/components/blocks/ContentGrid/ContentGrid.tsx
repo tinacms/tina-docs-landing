@@ -59,6 +59,7 @@ const MobileContentGridItem = ({
             {item.links && (
               <Link
                 href={item.links.url}
+                prefetch={false}
                 data-tina-field={tinaField(item, "links")}
                 className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
               >
@@ -113,6 +114,7 @@ const ContentGridItem = ({
       {item.links && (
         <Link
           href={item.links.url}
+          prefetch={false}
           data-tina-field={tinaField(item, "links")}
           className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
         >

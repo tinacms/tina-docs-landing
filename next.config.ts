@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   basePath,
   assetPrefix,
   images: {
+    path: '/landing/_next/image',
     remotePatterns: [
       {
         protocol: 'https',

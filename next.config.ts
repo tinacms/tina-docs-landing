@@ -3,12 +3,13 @@ import type { NextConfig } from 'next'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX ?? '/tina-docs'
+const imagesPath = basePath ? `${basePath}/landing/_next/image` : '/_next/image'
  
 const nextConfig: NextConfig = {
   basePath,
   assetPrefix,
   images: {
-    path: '/landing/_next/image',
+    path: imagesPath,
     remotePatterns: [
       {
         protocol: 'https',

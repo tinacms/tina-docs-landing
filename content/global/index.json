@@ -8,7 +8,7 @@
     "logo": "/uploads/tinaDocsLogo.svg",
     "navObjects": [
       {
-        "href": "https://tina-docs-1msuzf5j4-tinacms.vercel.app/docs",
+        "href": "https://tina.io/tinadocs/docs",
         "label": "Documentation",
         "_template": "navLink"
       },

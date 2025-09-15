@@ -6,7 +6,7 @@ const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX ?? '/tina-docs'
 const imagesPath = basePath ? `${basePath}/landing/_next/image` : '/_next/image'
  
 const nextConfig: NextConfig = {
-  // basePath,
+  basePath,
   assetPrefix,
   images: {
     path: imagesPath,

@@ -1,7 +1,12 @@
 import type { NextConfig } from 'next'
+
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX ?? '/tina-docs'
  
 const nextConfig: NextConfig = {
-  assetPrefix: '/tina-docs',
+  basePath,
+  assetPrefix,
   images: {
     remotePatterns: [
       {

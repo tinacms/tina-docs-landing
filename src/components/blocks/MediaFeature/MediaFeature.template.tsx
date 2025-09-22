@@ -73,6 +73,44 @@ export const MediaFeatureBlockSchema: Template = {
               ],
             },
             {
+              name: "video",
+              label: "Video",
+              fields: [
+                {
+                  name: "video",
+                  label: "Video URL",
+                  type: "image",
+                },
+                {
+                  name: "altText",
+                  label: "Alt Text",
+                  type: "string",
+                },
+                {
+                  name: "size",
+                  label: "Size",
+                  options: [
+                    { label: "Small", value: "small" },
+                    { label: "Medium", value: "medium" },
+                    { label: "Large", value: "large" },
+                  ],
+                  type: "string",
+                },
+                {
+                  name: "width",
+                  label: "Width",
+                  type: "number",
+                  description: "Optional: Set a specific width for the video",
+                },
+                {
+                  name: "height",
+                  label: "Height",
+                  type: "number",
+                  description: "Optional: Set a specific height for the video",
+                },
+              ],
+            },
+            {
               name: "youtubeVideo",
               label: "YouTube Video",
               fields: [

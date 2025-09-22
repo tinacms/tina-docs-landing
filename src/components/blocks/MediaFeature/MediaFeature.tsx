@@ -11,10 +11,12 @@ function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
   const [showVideo, setShowVideo] = useState(false);
 
   if (showVideo) {
+    const autoplayUrl = `${mediaContent.videoSrc}&autoplay=1`;
+
     return (
       <div className="relative w-full aspect-[16/9]">
         <iframe
-          src={mediaContent.videoSrc}
+          src={autoplayUrl}
           title={mediaContent.alt || "YouTube Video"}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -54,6 +56,49 @@ function YouTubeVideoPlayer({ mediaContent }: { mediaContent: any }) {
   );
 }
 
+function VideoPlayer({ mediaContent }: { mediaContent: any }) {
+  const getSizeClasses = (size: string) => {
+    switch (size) {
+      case "small":
+        return "max-w-md mx-auto";
+      case "medium":
+        return "max-w-2xl mx-auto";
+      case "large":
+        return "max-w-4xl mx-auto";
+      default:
+        return "max-w-2xl mx-auto";
+    }
+  };
+
+  const videoUrl =
+    typeof mediaContent.video === "string"
+      ? mediaContent.video
+      : mediaContent.video?.url || mediaContent.video;
+
+  if (!videoUrl) {
+    return null;
+  }
+
+  return (
+    <div className={`w-full ${getSizeClasses(mediaContent.size || "medium")}`}>
+      <video
+        src={videoUrl}
+        width={mediaContent.width || undefined}
+        height={mediaContent.height || undefined}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-auto rounded-lg shadow-lg"
+      >
+        {mediaContent.altText && (
+          <p>Your browser doesn't support HTML video. {mediaContent.altText}</p>
+        )}
+      </video>
+    </div>
+  );
+}
+
 function renderMediaContent(mediaContent: any) {
   if (mediaContent.__typename.includes("YoutubeVideo")) {
     return <YouTubeVideoPlayer mediaContent={mediaContent} />;
@@ -61,14 +106,19 @@ function renderMediaContent(mediaContent: any) {
   if (mediaContent.__typename.includes("Image")) {
     return (
       <div>
-        <Image
-          src={mediaContent.image.url}
-          alt={mediaContent.image.alt || "Untitled Image"}
-          width={mediaContent.image.width}
-          height={mediaContent.image.height}
-        />
+        {mediaContent?.image?.url && (
+          <Image
+            src={mediaContent.image.url}
+            alt={mediaContent?.image?.alt || "Untitled Image"}
+            width={mediaContent?.image?.width || 500}
+            height={mediaContent?.image?.height || 500}
+          />
+        )}
       </div>
     );
+  }
+  if (mediaContent.__typename.includes("Video")) {
+    return <VideoPlayer mediaContent={mediaContent} />;
   }
   return null;
 }
@@ -86,7 +136,9 @@ function renderFeatures(features: any[]) {
     <div className="flex flex-col">
       {features.map((feature, index) => (
         <div
-          key={`${feature.title || 'untitled'} - ${index}-${feature.description || ''}`}
+          key={`${feature.title || "untitled"} - ${index}-${
+            feature.description || ""
+          }`}
           data-tina-field={tinaField(feature)}
           className={`p-8 ${
             features.length === 2 && index === 0
@@ -162,7 +214,11 @@ export default function MediaFeature({
     <div className="py-10">
       {data.MediaBlock &&
         data.MediaBlock.map((block: any, index: number) => (
-          <div key={`media-block-${index}-${block.isMediaOnRight ? 'right' : 'left'}`}>
+          <div
+            key={`media-block-${index}-${
+              block.isMediaOnRight ? "right" : "left"
+            }`}
+          >
             {mediaBlock(block)}
           </div>
         ))}

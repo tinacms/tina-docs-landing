@@ -12,7 +12,7 @@
         "items": [
           {
             "labelLeft": "TinaCMS",
-            "hrefLeft": "/",
+            "hrefLeft": "/tinacms",
             "labelRight": "Docs",
             "hrefRight": "/docs"
           },

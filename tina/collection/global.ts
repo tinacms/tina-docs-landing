@@ -3,6 +3,60 @@ import { ColorPickerInput } from "../fields/color";
 import { iconSchema } from "../fields/icon";
 import { buttonVariantsArray } from "@/src/components/ui/button";
 
+const navDoubleLinkDropdown = 
+{
+  name: 'doubleNavItemDropDown',
+  label: 'Double Nav Item Dropdown',
+  type: 'object',
+  ui: {
+    itemProps: (item: any) => {
+      return { label: `🥈 ${item?.label}` };
+    },
+  },
+  fields: [
+    {
+      name: 'label',
+      label: 'Label',
+      type: 'string',
+    },
+    {
+      name: 'items',
+      label: 'Item',
+      type: 'object',
+      list: true,
+      ui: {
+        itemProps: (item: any) => {
+          return {
+            label: `🥈 ${item?.labelLeft} | ${item?.labelRight}`,
+          };
+        },
+      },
+      fields: [
+        {
+          name: 'labelLeft',
+          label: 'Label Left',
+          type: 'string',
+        },
+        {
+          name: 'hrefLeft',
+          label: 'href Left',
+          type: 'string',
+        },
+        {
+          name: 'labelRight',
+          label: 'Label Right',
+          type: 'string',
+        },
+        {
+          name: 'hrefRight',
+          label: 'href Right',
+          type: 'string',
+        },
+      ],
+    },
+  ],
+}
+
 const navLink = {
   name: "navLink",
   label: "Nav Link",
@@ -152,6 +206,7 @@ const Global: Collection = {
             githubButton,
             ctaButton,
             demoModalButton,
+            navDoubleLinkDropdown,
           ],
         },
       ],

@@ -10,6 +10,7 @@ import { ModalButton } from "../../ui/modalButton";
 import { DropdownButton } from "../../ui/dropdownButton";
 import { GitHubButton } from "../../ui/githubButton";
 import { SearchBar } from "../../ui/searchBar";
+import { DoubleItemDropDownButton } from "../../ui/doubleItemDropDownButton";
 
 const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
   const template = navObject.__typename;
@@ -70,6 +71,8 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
           </div>
         </>
       );
+    case "GlobalHeaderNavObjectsDoubleNavItemDropDown":
+      return <DoubleItemDropDownButton navObject={navObject} />;
 
     default:
       return <span className="text-red-500">Unknown template: {template}</span>;

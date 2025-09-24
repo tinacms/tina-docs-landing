@@ -8,9 +8,22 @@
     "logo": "/uploads/tinaDocsLogo.svg",
     "navObjects": [
       {
-        "href": "https://tina.io/tinadocs/docs",
-        "label": "Documentation",
-        "_template": "navLink"
+        "label": "Products",
+        "items": [
+          {
+            "labelLeft": "TinaCMS",
+            "hrefLeft": "/",
+            "labelRight": "Docs",
+            "hrefRight": "/docs"
+          },
+          {
+            "labelLeft": "TinaDocs",
+            "hrefLeft": "/tinadocs",
+            "labelRight": "Docs",
+            "hrefRight": "/tinadocs/docs"
+          }
+        ],
+        "_template": "doubleNavItemDropDown"
       },
       {
         "href": "/pricing",

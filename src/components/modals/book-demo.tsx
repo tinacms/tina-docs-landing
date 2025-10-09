@@ -1,7 +1,6 @@
 import { fetchMeetingLinks } from "@/src/utils/get-meeting-links";
 import Image from "next/image";
 import Link from "next/link";
-// biome-ignore lint/correctness/noUnusedImports: <TODO>
 import React, { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 
@@ -18,7 +17,6 @@ export const DemoForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       const meetingPeopleData = await fetchMeetingLinks();
-      console.log("meetingPeopleData", meetingPeopleData);
       if (meetingPeopleData) {
         setMeetingPeople(meetingPeopleData);
       }

@@ -8,58 +8,128 @@
     "logo": "/uploads/tinaDocsLogo.svg",
     "navObjects": [
       {
-        "label": "Products",
+        "label": "TinaDocs",
         "items": [
           {
-            "labelLeft": "TinaCMS",
-            "hrefLeft": "/tinacms",
-            "labelRight": "Docs",
-            "hrefRight": "/docs"
+            "label": "Home",
+            "href": "/tinadocs"
           },
           {
-            "labelLeft": "TinaDocs",
-            "hrefLeft": "/tinadocs",
-            "labelRight": "Docs",
-            "hrefRight": "/tinadocs/docs"
-          }
-        ],
-        "_template": "doubleNavItemDropDown"
-      },
-      {
-        "href": "/pricing",
-        "label": "Cloud Pricing",
-        "_template": "navLink"
-      },
-      {
-        "label": "Community",
-        "links": [
-          {
-            "link": "/showcase",
-            "label": "Showcase"
-          },
-          {
-            "link": "/roadmap",
-            "label": "Roadmap"
-          },
-          {
-            "link": "/events",
-            "label": "Events"
-          },
-          {
-            "link": "/docs/support",
-            "label": "Support"
-          },
-          {
-            "link": "https://discord.com/invite/zumN63Ybpf",
-            "label": "Discord"
+            "label": "Docs for TinaDocs",
+            "href": "/tinadocs/docs"
           }
         ],
         "_template": "navDropdown"
       },
       {
-        "href": "/enterprise",
-        "label": "Enterprise",
-        "_template": "navLink"
+        "label": "TinaCMS",
+        "items": [
+          {
+            "label": "Home",
+            "href": "/tinacms"
+          },
+          {
+            "label": "Docs for TinaCMS",
+            "href": "/docs"
+          },
+          {
+            "label": "Videos",
+            "href": "https://www.youtube.com/c/tinacms"
+          },
+          {
+            "label": "Compare TinaCMS",
+            "href": "/compare-tina"
+          },
+          {
+            "label": "Showcase",
+            "href": "/showcase"
+          },
+          {
+            "label": "What's New in TinaCMS",
+            "href": "/whats-new/tinacms"
+          }
+        ],
+        "_template": "navDropdown"
+      },
+      {
+        "label": "TinaCloud",
+        "items": [
+          {
+            "label": "My TinaCloud",
+            "href": "https://app.tina.io/signin"
+          },
+          {
+            "label": "What's New in TinaCloud",
+            "href": "/whats-new/tinacloud"
+          }
+        ],
+        "_template": "navDropdown"
+      },
+      {
+        "label": "Pricing",
+        "items": [
+          {
+            "label": "TinaCloud Pricing",
+            "href": "/pricing"
+          },
+          {
+            "label": "Enterprise",
+            "href": "/enterprise"
+          }
+        ],
+        "_template": "navDropdown"
+      },
+      {
+        "label": "Community",
+        "items": [
+          {
+            "label": "Events",
+            "href": "/events"
+          },
+          {
+            "label": "Certifications",
+            "href": "/certifications"
+          },
+          {
+            "label": "Awesome TinaCMS",
+            "href": "https://github.com/tinacms/awesome-tinacms"
+          },
+          {
+            "label": "Discord",
+            "href": "https://discord.com/invite/zumN63Ybpf"
+          },
+          {
+            "label": "Support",
+            "href": "/docs/support"
+          },
+          {
+            "label": "Forum",
+            "href": "https://github.com/tinacms/tinacms/discussions"
+          },
+          {
+            "label": "Roadmap",
+            "href": "/roadmap"
+          }
+        ],
+        "_template": "navDropdown"
+      },
+      {
+        "label": "About",
+        "items": [
+          {
+            "label": "About Tina",
+            "href": "/about"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog"
+          },
+          {
+            "label": "Examples",
+            "href": "/examples"
+          }
+        ],
+        "_template": "navDropdown"
       },
       {
         "_template": "githubButton"

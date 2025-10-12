@@ -1,9 +1,11 @@
 import { Footer } from "@/components/layout/nav/footer";
 import { Button } from "@/components/ui/button";
 import client from "@/tina/__generated__/client";
+import { ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
+import { tinaField } from "tinacms/dist/react";
 import { LayoutProvider } from "../components/layout/layout-context";
 import { Header } from "../components/layout/nav/header";
 
@@ -58,27 +60,27 @@ export default async function NotFound({
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
-            <Button
-              variant="default"
-              size="lg"
-              className="w-fit cursor-pointer"
+            <Link
+              href="/tinadocs/docs"
+              className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Documentation
-            </Button>
-            <Button
-              variant="default"
-              size="lg"
-              className="w-fit cursor-pointer"
+              <ChevronRightIcon className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="https://tina.io/docs/beginner-tutorials/tutorial-overview"
+              className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Guides
-            </Button>
-            <Button
-              variant="default"
-              size="lg"
-              className="w-fit cursor-pointer"
+              <ChevronRightIcon className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/tinadocs"
+              className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Home
-            </Button>
+              <ChevronRightIcon className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
         <div className="max-w-[65vw] mx-auto md:max-w-none">

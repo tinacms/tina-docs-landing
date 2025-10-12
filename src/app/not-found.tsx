@@ -1,4 +1,3 @@
-"use client";
 import { Footer } from "@/components/layout/nav/footer";
 import { Button } from "@/components/ui/button";
 import client from "@/tina/__generated__/client";

@@ -42,7 +42,7 @@ export default async function NotFound({
     {
       fetchOptions: {
         next: {
-          revalidate: 60,
+          revalidate: 3600,
         },
       },
     }

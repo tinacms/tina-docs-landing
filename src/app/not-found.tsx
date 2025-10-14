@@ -86,7 +86,9 @@ export default async function NotFound({
         <div className="max-w-[65vw] mx-auto md:max-w-none">
           <div className="relative rounded-3xl overflow-hidden">
             <Image
-              src="/img/tina-404-not-found.webp"
+              src={`${
+                process.env.NEXT_PUBLIC_BASE_PATH || ""
+              }/img/tina-404-not-found.webp`}
               alt="404 not found"
               width={500}
               height={450}

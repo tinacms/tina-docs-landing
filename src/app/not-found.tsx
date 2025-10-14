@@ -1,5 +1,4 @@
 import { Footer } from "@/components/layout/nav/footer";
-import { Button } from "@/components/ui/button";
 import client from "@/tina/__generated__/client";
 import { ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -54,14 +53,18 @@ export default async function NotFound({
         <div className="flex flex-col justify-center">
           <div className="mb-7">
             <h1 className="font-ibm-plex text-6xl leading-tight">{title}</h1>
-            <hr className="block border-none bg-[url('/svg/hr.svg')] bg-no-repeat bg-[length:auto_100%] h-[7px] w-full my-8" />
+            <hr
+              className={`block border-none bg-[url('${
+                process.env.NEXT_PUBLIC_BASE_PATH || ""
+              }/svg/hr.svg')] bg-no-repeat bg-[length:auto_100%] h-[7px] w-full my-8`}
+            />
             <p className="text-lg lg:text-xl lg:leading-normal block -mb-1">
               {description}
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/tinadocs/docs"
+              href="/docs"
               className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Documentation
@@ -75,7 +78,7 @@ export default async function NotFound({
               <ChevronRightIcon className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/tinadocs"
+              href="/"
               className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Home
@@ -86,7 +89,9 @@ export default async function NotFound({
         <div className="max-w-[65vw] mx-auto md:max-w-none">
           <div className="relative rounded-3xl overflow-hidden">
             <Image
-              src="/img/tina-404-not-found.webp"
+              src={`${
+                process.env.NEXT_PUBLIC_BASE_PATH || ""
+              }/img/tina-404-not-found.webp`}
               alt="404 not found"
               width={500}
               height={450}

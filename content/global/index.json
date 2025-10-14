@@ -12,15 +12,15 @@
         "items": [
           {
             "labelLeft": "TinaCMS",
-            "hrefLeft": "/tinacms",
+            "hrefLeft": "https://tina.io/tinacms",
             "labelRight": "Docs",
-            "hrefRight": "/docs"
+            "hrefRight": "https://tina.io/docs"
           },
           {
             "labelLeft": "TinaDocs",
-            "hrefLeft": "/tinadocs",
+            "hrefLeft": "/",
             "labelRight": "Docs",
-            "hrefRight": "/tinadocs/docs"
+            "hrefRight": "/docs"
           }
         ],
         "_template": "doubleNavItemDropDown"
@@ -93,7 +93,7 @@
         "links": [
           {
             "label": "Features",
-            "url": "/tinadocs/docs/tinadocs-features/feature-list"
+            "url": "/docs/tinadocs-features/feature-list"
           },
           {
             "label": "Pricing",
@@ -114,11 +114,11 @@
         "links": [
           {
             "label": "Documentation",
-            "url": "/tinadocs/docs"
+            "url": "/docs"
           },
           {
             "label": "API Reference",
-            "url": "/tinadocs/docs/tinadocs-features/openapi-spec-docs"
+            "url": "/docs/tinadocs-features/openapi-spec-docs"
           },
           {
             "label": "Guides",

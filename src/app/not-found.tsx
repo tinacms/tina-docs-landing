@@ -64,7 +64,7 @@ export default async function NotFound({
           </div>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/tinadocs/docs"
+              href="/docs"
               className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Documentation
@@ -78,7 +78,7 @@ export default async function NotFound({
               <ChevronRightIcon className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/tinadocs"
+              href="/"
               className="inline-flex items-center text-[#FF9B73] hover:text-[#d28161] font-medium transition-colors group"
             >
               Home

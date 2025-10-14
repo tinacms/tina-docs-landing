@@ -1,5 +1,4 @@
 import { Footer } from "@/components/layout/nav/footer";
-import { Button } from "@/components/ui/button";
 import client from "@/tina/__generated__/client";
 import { ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -54,7 +53,11 @@ export default async function NotFound({
         <div className="flex flex-col justify-center">
           <div className="mb-7">
             <h1 className="font-ibm-plex text-6xl leading-tight">{title}</h1>
-            <hr className="block border-none bg-[url('/svg/hr.svg')] bg-no-repeat bg-[length:auto_100%] h-[7px] w-full my-8" />
+            <hr
+              className={`block border-none bg-[url('${
+                process.env.NEXT_PUBLIC_BASE_PATH || ""
+              }/svg/hr.svg')] bg-no-repeat bg-[length:auto_100%] h-[7px] w-full my-8`}
+            />
             <p className="text-lg lg:text-xl lg:leading-normal block -mb-1">
               {description}
             </p>

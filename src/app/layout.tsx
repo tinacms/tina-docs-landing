@@ -1,9 +1,9 @@
-import React from "react";
+import VideoDialog from "@/components/ui/VideoDialog";
+import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
+import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { Inter as FontSans, Lato, Nunito } from "next/font/google";
-import { cn } from "@/lib/utils";
-import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
-import VideoDialog from "@/components/ui/VideoDialog";
+import React from "react";
 
 import "@/styles.css";
 import { TailwindIndicator } from "@/components/ui/breakpoint-indicator";
@@ -40,7 +40,11 @@ export default function RootLayout({
       className={cn(fontSans.variable, nunito.variable, lato.variable)}
     >
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link
+          rel="icon"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/favicon.svg`}
+          type="image/svg+xml"
+        />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <VideoDialogProvider>

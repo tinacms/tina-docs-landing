@@ -25,8 +25,8 @@
         "label": "TinaCMS",
         "links": [
           {
-            "link": "Home",
-            "label": "https://tina.io/tinacms"
+            "link": "https://tina.io/tinacms",
+            "label": "Home"
           },
           {
             "link": "https://tina.io/docs",

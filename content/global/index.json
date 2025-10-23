@@ -163,15 +163,15 @@
         "links": [
           {
             "label": "Features",
-            "url": "/docs/tinadocs-features/feature-list"
+            "url": "https://tina.io/tinadocs/docs/tinadocs-features/feature-list"
           },
           {
             "label": "Pricing",
-            "url": "/pricing"
+            "url": "https://tina.io/pricing"
           },
           {
             "label": "Examples",
-            "url": "/examples"
+            "url": "https://tina.io/examples"
           },
           {
             "label": "Templates",
@@ -196,7 +196,7 @@
           },
           {
             "label": "Blog",
-            "url": "/blog"
+            "url": "https://tina.io/blog"
           }
         ]
       },
@@ -205,7 +205,7 @@
         "links": [
           {
             "label": "About",
-            "url": "/about"
+            "url": "https://tina.io/about"
           },
           {
             "label": "Support",

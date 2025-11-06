@@ -5,7 +5,7 @@
       "color": "orange",
       "style": "float"
     },
-    "logo": "/uploads/tinaDocsLogo.svg",
+    "logo": "/uploads/tinaio-extended-logo.svg",
     "navObjects": [
       {
         "label": "TinaDocs",
@@ -150,7 +150,7 @@
   "footer": {
     "reservedText": "TinaDocs. All rights reserved.",
     "lhs": {
-      "logo": "/uploads/tinaDocsLogo.svg",
+      "logo": "/uploads/tinaio-extended-logo.svg",
       "subtext": "The modern way to build and manage documentation",
       "button": {
         "label": "",

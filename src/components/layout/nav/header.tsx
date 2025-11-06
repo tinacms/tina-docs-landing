@@ -100,7 +100,7 @@ export const Header = () => {
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full items-center gap-4 lg:gap-8 xl:justify-between">
               <Link
-                href="/"
+                href="https://tina.io/"
                 aria-label="home"
                 className="flex items-center flex-shrink-0"
               >

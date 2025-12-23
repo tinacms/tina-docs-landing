@@ -153,7 +153,7 @@ const MobileNav = ({
 }) => {
   return (
     <>
-      <div className="flex lg:hidden w-full py-4 pl-4 pr-18 items-center justify-between gap-6">
+      <div className="flex xl:hidden w-full py-4 pl-4 pr-18 items-center justify-between gap-6">
         <Link
           href="https://tina.io/"
           aria-label="home"
@@ -169,7 +169,7 @@ const MobileNav = ({
         </Link>
 
         <div className="flex space-x-2 gap-2">
-          <Button variant="default" size="sm" asChild>
+          <Button variant="default" size="lg" asChild>
             <Link href="https://app.tina.io">My TinaCloud</Link>
           </Button>
         </div>
@@ -177,13 +177,13 @@ const MobileNav = ({
 
       {/* Mobile Slide-out Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-[300px] bg-gradient-to-t from-blue-50 to-white shadow-2xl z-50 transition ease-out duration-200 ${
+        className={`fixed top-0 right-0 h-full w-[300px] bg-gradient-to-b from-[#111110] to-[#111110] shadow-2xl z-50 transition ease-out duration-200 ${
           menuState ? "translate-x-0" : "translate-x-full"
-        } lg:hidden`}
+        } xl:hidden`}
       >
         <button
           type="button"
-          className="absolute top-20 left-0 -translate-x-full transition duration-150 ease-out rounded-l-full flex items-center font-medium whitespace-nowrap leading-tight hover:shadow active:shadow-none text-orange-500 hover:text-orange-400 border border-gray-100/60 bg-gradient-to-br from-white to-gray-50 pr-3 pl-4 pt-[8px] pb-[6px] text-sm cursor-pointer"
+          className="absolute top-20 left-0 -translate-x-full transition duration-150 ease-out rounded-l-full flex items-center font-medium whitespace-nowrap leading-tight hover:shadow active:shadow-none text-orange-500 hover:text-orange-400 shadow-xl bg-[#182449]/50 pr-3 pl-4 pt-[8px] pb-[6px] text-sm cursor-pointer"
           onClick={toggleMenu}
         >
           <Menu
@@ -226,7 +226,7 @@ const MobileNav = ({
             {navObjects.map((navObject: any, index: number) => (
               <li
                 key={index}
-                className="flex items-center py-2 text-blue-700 hover:text-blue-500 transition ease-out duration-150 drop-shadow-sm text-lg font-medium"
+                className="flex items-center py-2 text-white hover:text-accent-foreground transition ease-out duration-150 drop-shadow-sm text-lg font-medium"
               >
                 <NavigationObjectRenderer
                   navObject={navObject}
@@ -261,7 +261,6 @@ export const Header = () => {
   const [isClient, setIsClient] = React.useState(false);
 
   React.useEffect(() => {
-    // Ensure we're on the client side
     setIsClient(true);
   }, []);
 
@@ -272,7 +271,6 @@ export const Header = () => {
       setStuck(window.scrollY > 50);
     };
 
-    // Set initial scroll state
     onScroll();
 
     window.addEventListener("scroll", onScroll, { passive: true });

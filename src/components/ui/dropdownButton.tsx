@@ -23,7 +23,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   return (
     <>
       {/* Desktop version (lg+) - Hover dropdown */}
-      <div className="relative group hidden lg:block">
+      <div className="relative group hidden xl:block">
         <button className="flex text-neutral-text items-center gap-1 duration-150">
           <span>{label}</span>
           <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
@@ -34,6 +34,8 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
               {links.map((linkItem, index) => (
                 <li key={index} className='flex items-center'>
                   <Link
+                    target={linkItem?.link?.startsWith('http') && !linkItem?.link?.startsWith('https://tina.io') ? "_blank" : "_self"}
+                    rel={linkItem?.link?.startsWith('http') && !linkItem?.link?.startsWith('https://tina.io') ? "noopener noreferrer" : undefined}
                     href={linkItem.link || "#"}
                     className="text-muted-foreground hover:text-accent-foreground px-4 py-2 text-base duration-150 flex items-center gap-2"
                   >
@@ -48,10 +50,10 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
       </div>
 
       {/* Mobile version (below lg) - Inline list */}
-      <div className="block lg:hidden">
+      <div className="block xl:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex text-neutral-text items-center gap-1 duration-150 w-full hover:cursor-pointer"
+          className="flex text-neutral-text items-center gap-2 duration-150 w-full hover:cursor-pointer"
         >
           <span>{label}</span>
           <ChevronDown
@@ -66,9 +68,10 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
               <Link
                 key={index}
                 href={linkItem.link || "#"}
-                className="text-muted-foreground hover:text-accent-foreground block pl-4 text-sm duration-150"
+                className="text-muted-foreground hover:text-accent-foreground pl-4 text-base duration-150 flex items-center gap-2"
               >
                 {linkItem.label}
+                {linkItem?.link?.startsWith('http') && !linkItem?.link?.startsWith('https://tina.io') && <span className="text-white"><BiLinkExternal/></span>}
               </Link>
             ))}
           </div>

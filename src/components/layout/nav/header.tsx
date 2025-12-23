@@ -153,7 +153,7 @@ const MobileNav = ({
 }) => {
   return (
     <>
-      <div className="flex xl:hidden w-full py-4 pl-4 pr-18 items-center justify-between gap-6">
+      <div className="flex xl:hidden w-full py-4 px-16 items-center justify-between gap-6">
         <Link
           href="https://tina.io/"
           aria-label="home"

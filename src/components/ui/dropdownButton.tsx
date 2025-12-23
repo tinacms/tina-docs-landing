@@ -107,18 +107,16 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
         >
           <span>{label}</span>
           <ChevronDown
-            className={`w-3 h-3 transition-transform ${
-              isOpen ? "rotate-180" : ""
-            }`}
+            className='w-3 h-3'
           />
         </button>
         {isOpen && links && links.length > 0 && (
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 flex flex-col gap-4">
             {links.map((linkItem, index) => (
               <Link
                 key={index}
                 href={linkItem.link || "#"}
-                className="text-muted-foreground hover:text-accent-foreground pl-4 text-base duration-150 flex items-center gap-2"
+                className="text-muted-foreground hover:text-accent-foreground pl-4 text-lg duration-150 flex items-center gap-2"
               >
                 {linkItem.label}
                 {linkItem?.link?.startsWith("http") &&

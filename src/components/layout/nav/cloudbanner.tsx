@@ -9,7 +9,7 @@ export function CloudBanner() {
   return (
     <div
       className="relative z-10 w-full flex flex-col items-center justify-center 
-        py-3 px-4 text-base leading-[1.2] text-white bg-gradient-to-br from-[#111110] via-[#111110] to-[#182449]/50
+        py-3 px-4 text-base leading-[1.2] text-white bg-gradient-to-br from-[#111110] to-slate-800
         lg:flex-row lg:pl-8 lg:pr-10"
     >
       <div className="flex items-center mt-[0.3rem] mb-2 lg:mb-0 gap-2">

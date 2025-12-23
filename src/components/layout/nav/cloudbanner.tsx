@@ -12,24 +12,16 @@ export function CloudBanner() {
         py-3 px-4 text-base leading-[1.2] text-white bg-gradient-to-br from-[#111110] via-[#111110] to-[#182449]/50
         lg:flex-row lg:pl-8 lg:pr-10"
     >
-      <div
-        className="flex items-center mt-[0.3rem] mb-2 lg:mb-0">
+      <div className="flex items-center mt-[0.3rem] mb-2 lg:mb-0 gap-2">
         <Link
-          className="pr-2 text-white hover:text-[#EC4816] transition-colors duration-200 flex items-center gap-1 "
+          className="text-white hover:text-[#EC4816] transition-colors duration-200 flex items-center gap-1"
           href={`https://github.com/tinacms/tinacms`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Loving Tina?{" "}
-          <FaStar
-            className="ml-1
-        "
-          />{" "}
-          us on GitHub
-          <span className="flex items-center">
-            <GitHubButton />
-          </span>
+          Loving Tina? <FaStar className="ml-1" /> us on GitHub
         </Link>
+        <GitHubButton />
       </div>
     </div>
   );

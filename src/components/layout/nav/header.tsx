@@ -12,7 +12,13 @@ import { GitHubButton } from "../../ui/githubButton";
 import { SearchBar } from "../../ui/searchBar";
 import { DoubleItemDropDownButton } from "../../ui/doubleItemDropDownButton";
 
-const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
+const NavigationObjectRenderer = ({
+  navObject,
+  isMobile = false,
+}: {
+  navObject: any;
+  isMobile?: boolean;
+}) => {
   const template = navObject.__typename;
 
   switch (template) {
@@ -31,7 +37,7 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
       return (
         <Link
           href={navObject.href || "#"}
-          className="text-neutral-text hover:text-accent-foreground block duration-150"
+          className="text-blue-700 hover:text-blue-500 transition ease-out duration-150"
         >
           <span>{navObject.label}</span>
         </Link>
@@ -41,35 +47,33 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
       return <DropdownButton label={navObject.label} links={navObject.links} />;
 
     case "GlobalHeaderNavObjectsSearchBar":
-      return (
-        <div className="hidden lg:block">
+      return !isMobile ? (
+        <div>
           <SearchBar placeholder={navObject.label} />
         </div>
-      );
+      ) : null;
 
     case "GlobalHeaderNavObjectsGithubButton":
-      return (
-        <div className="hidden lg:block">
+      return !isMobile ? (
+        <div>
           <GitHubButton />
         </div>
+      ) : (
+        <GitHubButton />
       );
 
     case "GlobalHeaderNavObjectsCtaButton":
       return (
-        <>
-          <div className="hidden lg:block">
-            <Button variant={navObject.variant || "default"} size="sm" asChild>
-              <Link href={navObject.url || "#"}>
-                {navObject.label || "Get Started"}
-              </Link>
-            </Button>
-          </div>
-          <div className="block lg:hidden font-semibold">
-            <Link href={navObject.url || "#"}>
-              {navObject.label || "Get Started"}
-            </Link>
-          </div>
-        </>
+        <Button
+          variant={navObject.variant || "default"}
+          size="sm"
+          className="bg-blue-600 hover:bg-blue-700 text-white transition ease-out duration-150"
+          asChild
+        >
+          <Link href={navObject.url || "#"}>
+            {navObject.label || "Get Started"}
+          </Link>
+        </Button>
       );
     case "GlobalHeaderNavObjectsDoubleNavItemDropDown":
       return <DoubleItemDropDownButton navObject={navObject} />;
@@ -79,76 +83,205 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
   }
 };
 
-export const Header = () => {
-  const { globalSettings, theme } = useLayout();
-  const header = globalSettings!.header!;
-  const doNavObjectsIncludeSearchBar = header.navObjects!.some(
-    (navObject: any) =>
-      navObject.__typename === "GlobalHeaderNavObjectsSearchBar"
-  );
-
-  const navObjects = header.navObjects!;
-
-  const [menuState, setMenuState] = React.useState(false);
+const DesktopNav = ({
+  navObjects,
+  header,
+  stuck,
+}: {
+  navObjects: any[];
+  header: any;
+  stuck: boolean;
+}) => {
   return (
-    <header>
-      <nav
-        data-state={menuState && "active"}
-        className="bg-background/50 fixed z-20 w-full border-b backdrop-blur-3xl"
+    <div className="relative w-full">
+      <div
+        className={`absolute ${
+          stuck
+            ? "xl:fixed shadow-sm bg-background/50 backdrop-blur-sm animate-slide-in top-0 p-4"
+            : "translate-y-2 px-4 pt-4 pb-6"
+        } z-40 w-full lg:px-10 hidden xl:flex items-center justify-between transition-all duration-300`}
       >
-        <div className="mx-auto max-w-7xl px-6 transition-all duration-300">
-          <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-            <div className="flex w-full items-center gap-4 lg:gap-8 xl:justify-between">
-              <Link
-                href="https://tina.io/"
-                aria-label="home"
-                className="flex items-center flex-shrink-0"
+        <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
+          <Link
+            href="https://tina.io/"
+            aria-label="home"
+            className="flex items-center flex-shrink-0"
+          >
+            <Image
+              src={header.logo!}
+              width={100}
+              height={100}
+              alt={"Logo"}
+              className="w-auto h-8 lg:h-10 fill-orange-500"
+            />
+          </Link>
+
+          <ul className="flex gap-4 items-center justify-center">
+            {navObjects.map((navObject: any, index: number) => (
+              <li
+                key={index}
+                className="flex items-center py-2 px-3 text-white hover:text-accent-foreground transition ease-out duration-150 drop-shadow-sm text-base font-medium"
               >
+                <NavigationObjectRenderer navObject={navObject} />
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-4">
+            <Button variant="default" size="lg" asChild>
+              <Link href="https://app.tina.io">My TinaCloud</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MobileNav = ({
+  navObjects,
+  header,
+  menuState,
+  toggleMenu,
+}: {
+  navObjects: any[];
+  header: any;
+  menuState: boolean;
+  toggleMenu: () => void;
+}) => {
+  return (
+    <>
+      <div className="flex lg:hidden w-full py-4 pl-4 pr-18 items-center justify-between gap-6">
+        <Link
+          href="https://tina.io/"
+          aria-label="home"
+          className="flex items-center flex-shrink-0"
+        >
+          <Image
+            src={header.logo!}
+            width={100}
+            height={100}
+            alt={"Logo"}
+            className="w-auto h-8 fill-orange-500"
+          />
+        </Link>
+
+        <div className="flex space-x-2 gap-2">
+          <Button variant="default" size="sm" asChild>
+            <Link href="https://app.tina.io">My TinaCloud</Link>
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Slide-out Menu */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[300px] bg-gradient-to-t from-blue-50 to-white shadow-2xl z-50 transition ease-out duration-200 ${
+          menuState ? "translate-x-0" : "translate-x-full"
+        } lg:hidden`}
+      >
+        <button
+          type="button"
+          className="absolute top-20 left-0 -translate-x-full transition duration-150 ease-out rounded-l-full flex items-center font-medium whitespace-nowrap leading-tight hover:shadow active:shadow-none text-orange-500 hover:text-orange-400 border border-gray-100/60 bg-gradient-to-br from-white to-gray-50 pr-3 pl-4 pt-[8px] pb-[6px] text-sm cursor-pointer"
+          onClick={toggleMenu}
+        >
+          <Menu
+            className={`h-6 w-auto transition ease-out duration-200 ${
+              menuState ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <X
+            className={`absolute h-6 w-auto transition ease-out duration-150 ${
+              menuState ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        </button>
+
+        <div className="h-full w-full absolute overflow-y-auto">
+          <div className="flex py-4 px-6 relative z-20 justify-between items-center">
+            <div className="pb-4 pt-2">
+              <Link href="https://tina.io/">
                 <Image
                   src={header.logo!}
                   width={100}
                   height={100}
                   alt={"Logo"}
-                  className="w-auto h-8 lg:h-10"
+                  className="w-auto h-8 fill-orange-500"
                 />
               </Link>
-
-              <div className="flex items-center gap-2 lg:hidden ml-auto">
-                <button
-                  onClick={() => setMenuState(!menuState)}
-                  aria-label={menuState == true ? "Close Menu" : "Open Menu"}
-                  className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
-                >
-                  <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                  <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-                </button>
-              </div>
-
-              <div className="hidden lg:block ml-auto">
-                <ul className="flex gap-4 lg:gap-5 text-sm items-center">
-                  {navObjects.map((navObject: any, index: number) => (
-                    <li key={index}>
-                      <NavigationObjectRenderer navObject={navObject} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl py-6 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
-              <div className="lg:hidden">
-                <ul className="space-y-6 text-base">
-                  {navObjects.map((navObject: any, index: number) => (
-                    <li key={index}>
-                      <NavigationObjectRenderer navObject={navObject} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
+
+          <Button
+            variant="default"
+            size="sm"
+            className="mx-6 justify-center w-auto"
+            asChild
+          >
+            <Link href="https://app.tina.io">My TinaCloud</Link>
+          </Button>
+
+          <ul className="flex flex-col py-4 px-6 relative z-20 space-y-6 text-base">
+            {navObjects.map((navObject: any, index: number) => (
+              <li
+                key={index}
+                className="flex items-center py-2 text-blue-700 hover:text-blue-500 transition ease-out duration-150 drop-shadow-sm text-lg font-medium"
+              >
+                <NavigationObjectRenderer
+                  navObject={navObject}
+                  isMobile={true}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
-      </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full bg-gray-900/70 z-30 lg:hidden ${
+          menuState
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={toggleMenu}
+      />
+    </>
+  );
+};
+
+export const Header = () => {
+  const { globalSettings, theme } = useLayout();
+  const header = globalSettings!.header!;
+  const navObjects = header.navObjects!;
+
+  const [menuState, setMenuState] = React.useState(false);
+  const [stuck, setStuck] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => {
+      setStuck(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    const newMenuOpen = !menuState;
+    setMenuState(newMenuOpen);
+    document.body.style.overflow = newMenuOpen ? "hidden" : "auto";
+  };
+
+  return (
+    <header>
+      <DesktopNav navObjects={navObjects} header={header} stuck={stuck} />
+      <MobileNav
+        navObjects={navObjects}
+        header={header}
+        menuState={menuState}
+        toggleMenu={toggleMenu}
+      />
     </header>
   );
 };

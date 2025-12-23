@@ -8,20 +8,6 @@
     "logo": "/uploads/tinaio-logo.svg",
     "navObjects": [
       {
-        "label": "TinaDocs",
-        "links": [
-          {
-            "link": "/",
-            "label": "Home"
-          },
-          {
-            "link": "/docs",
-            "label": "Docs for TinaDocs"
-          }
-        ],
-        "_template": "navDropdown"
-      },
-      {
         "label": "TinaCMS",
         "links": [
           {
@@ -52,15 +38,29 @@
         "_template": "navDropdown"
       },
       {
+        "label": "TinaDocs",
+        "links": [
+          {
+            "link": "/",
+            "label": "Home"
+          },
+          {
+            "link": "/docs",
+            "label": "Docs for TinaDocs"
+          }
+        ],
+        "_template": "navDropdown"
+      },
+      {
         "label": "TinaCloud",
         "links": [
           {
-            "link": "https://app.tina.io/signin",
-            "label": "My TinaCloud"
-          },
-          {
             "link": "https://tina.io/whats-new/tinacloud",
             "label": "What's New in TinaCloud"
+          },
+          {
+            "link": "https://app.tina.io/quickstart",
+            "label": "Quickstart"
           }
         ],
         "_template": "navDropdown"
@@ -130,20 +130,6 @@
           }
         ],
         "_template": "navDropdown"
-      },
-      {
-        "_template": "githubButton"
-      },
-      {
-        "label": "Book a Demo",
-        "variant": "outline",
-        "_template": "demoModal"
-      },
-      {
-        "label": "Get Started",
-        "url": "https://app.tina.io/quickstart",
-        "variant": "default",
-        "_template": "ctaButton"
       }
     ]
   },

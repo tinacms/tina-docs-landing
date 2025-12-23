@@ -114,11 +114,6 @@ export const Header = () => {
               </Link>
 
               <div className="flex items-center gap-2 lg:hidden ml-auto">
-                <div className="block lg:hidden">
-                  {doNavObjectsIncludeSearchBar && (
-                    <SearchBar placeholder={"Search"} />
-                  )}
-                </div>
                 <button
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState == true ? "Close Menu" : "Open Menu"}

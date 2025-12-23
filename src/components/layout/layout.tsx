@@ -3,6 +3,7 @@ import { LayoutProvider } from "./layout-context";
 import client from "@/tina/__generated__/client";
 import { Header } from "./nav/header";
 import { Footer } from "./nav/footer";
+import { CloudBanner } from "./nav/cloudbanner";
 
 type LayoutProps = PropsWithChildren & {
   rawPageData?: any;
@@ -23,6 +24,7 @@ export default async function Layout({ children, rawPageData }: LayoutProps) {
 
   return (
     <LayoutProvider globalSettings={globalData.global} pageData={rawPageData}>
+      <CloudBanner />
       <Header />
       <main className="overflow-x-hidden pt-20">
         {children}

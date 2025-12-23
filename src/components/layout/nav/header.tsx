@@ -215,7 +215,7 @@ const MobileNav = ({
 
           <Button
             variant="default"
-            size="sm"
+            size="lg"
             className="mx-6 justify-center w-auto"
             asChild
           >

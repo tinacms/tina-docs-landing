@@ -87,16 +87,18 @@ const DesktopNav = ({
   navObjects,
   header,
   stuck,
+  isClient,
 }: {
   navObjects: any[];
   header: any;
   stuck: boolean;
+  isClient: boolean;
 }) => {
   return (
     <div className="relative w-full">
       <div
         className={`absolute ${
-          stuck
+          isClient && stuck
             ? "xl:fixed shadow-sm bg-background/50 backdrop-blur-sm animate-slide-in top-0 p-4"
             : "translate-y-2 px-4 pt-4 pb-6"
         } z-40 w-full lg:px-10 hidden xl:flex items-center justify-between transition-all duration-300`}
@@ -256,16 +258,28 @@ export const Header = () => {
 
   const [menuState, setMenuState] = React.useState(false);
   const [stuck, setStuck] = React.useState(false);
+  const [isClient, setIsClient] = React.useState(false);
 
   React.useEffect(() => {
+    // Ensure we're on the client side
+    setIsClient(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!isClient) return;
+
     const onScroll = () => {
       setStuck(window.scrollY > 50);
     };
+
+    // Set initial scroll state
+    onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [isClient]);
 
   const toggleMenu = () => {
     const newMenuOpen = !menuState;
@@ -275,7 +289,12 @@ export const Header = () => {
 
   return (
     <header>
-      <DesktopNav navObjects={navObjects} header={header} stuck={stuck} />
+      <DesktopNav
+        navObjects={navObjects}
+        header={header}
+        stuck={stuck}
+        isClient={isClient}
+      />
       <MobileNav
         navObjects={navObjects}
         header={header}

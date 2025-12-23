@@ -122,7 +122,7 @@ const DesktopNav = ({
             {navObjects.map((navObject: any, index: number) => (
               <li
                 key={index}
-                className="flex items-center py-2 px-3 text-white hover:text-accent-foreground transition ease-out duration-150 drop-shadow-sm text-base font-medium"
+                className="flex items-center text-white hover:text-accent-foreground transition ease-out duration-150 drop-shadow-sm text-base font-medium"
               >
                 <NavigationObjectRenderer navObject={navObject} />
               </li>

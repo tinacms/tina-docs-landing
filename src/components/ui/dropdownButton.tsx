@@ -19,6 +19,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   links,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  //This is hard-coded because this nav bar will only ever be visible for the TinaDocs landing page (this repo is multi-zoned on the tina.io domain)
   const isActive = label === "TinaDocs"
 
   return (

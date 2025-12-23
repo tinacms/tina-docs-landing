@@ -114,7 +114,7 @@ const DesktopNav = ({
               width={100}
               height={100}
               alt={"Logo"}
-              className="w-auto h-8 lg:h-10 fill-orange-500"
+              className="w-auto h-8 xl:h-10 fill-orange-500"
             />
           </Link>
 
@@ -164,15 +164,10 @@ const MobileNav = ({
             width={100}
             height={100}
             alt={"Logo"}
-            className="w-auto h-8 fill-orange-500"
+            className="w-auto h-10 fill-orange-500"
           />
         </Link>
 
-        <div className="flex space-x-2 gap-2">
-          <Button variant="default" size="lg" asChild>
-            <Link href="https://app.tina.io">My TinaCloud</Link>
-          </Button>
-        </div>
       </div>
 
       {/* Mobile Slide-out Menu */}
@@ -216,7 +211,7 @@ const MobileNav = ({
           <Button
             variant="default"
             size="lg"
-            className="mx-6 justify-center w-auto"
+            className="mx-6 justify-center w-[240px]"
             asChild
           >
             <Link href="https://app.tina.io">My TinaCloud</Link>

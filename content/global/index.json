@@ -8,20 +8,6 @@
     "logo": "/uploads/tinaio-logo.svg",
     "navObjects": [
       {
-        "label": "TinaDocs",
-        "links": [
-          {
-            "link": "/",
-            "label": "Home"
-          },
-          {
-            "link": "/docs",
-            "label": "Docs for TinaDocs"
-          }
-        ],
-        "_template": "navDropdown"
-      },
-      {
         "label": "TinaCMS",
         "links": [
           {
@@ -37,10 +23,6 @@
             "label": "Videos"
           },
           {
-            "link": "https://tina.io/compare-tina",
-            "label": "Compare TinaCMS"
-          },
-          {
             "link": "https://tina.io/showcase",
             "label": "Showcase"
           },
@@ -52,32 +34,45 @@
         "_template": "navDropdown"
       },
       {
-        "label": "TinaCloud",
+        "label": "TinaDocs",
         "links": [
           {
-            "link": "https://app.tina.io/signin",
-            "label": "My TinaCloud"
+            "link": "/",
+            "label": "Home"
           },
           {
-            "link": "https://tina.io/whats-new/tinacloud",
-            "label": "What's New in TinaCloud"
+            "link": "/docs",
+            "label": "Docs for TinaDocs"
           }
         ],
         "_template": "navDropdown"
       },
       {
-        "label": "Pricing",
+        "label": "TinaCloud",
         "links": [
           {
             "link": "https://tina.io/pricing",
-            "label": "TinaCloud Pricing"
+            "label": "Pricing"
           },
           {
             "link": "https://tina.io/enterprise",
             "label": "Enterprise"
+          },
+          {
+            "link": "https://app.tina.io/quickstart",
+            "label": "Quickstart"
+          },
+          {
+            "link": "https://tina.io/whats-new/tinacloud",
+            "label": "Whats New in TinaCloud"
           }
         ],
         "_template": "navDropdown"
+      },
+      {
+        "href": "https://tina.io/editorial-workflow",
+        "label": "Editorial Workflow",
+        "_template": "navLink"
       },
       {
         "label": "Community",
@@ -119,6 +114,10 @@
           {
             "link": "https://tina.io/about",
             "label": "About Tina"
+          },
+          {
+            "link": "https://tina.io/compare-tina",
+            "label": "Compare TinaCMS"
           },
           {
             "link": "https://tina.io/blog",

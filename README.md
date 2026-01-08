@@ -101,7 +101,8 @@ Open [http://localhost:3000](http://localhost:3000) to see your docs in action.
 NEXT_PUBLIC_TINA_CLIENT_ID=<get this from app.tina.io>
 TINA_TOKEN=<get this from app.tina.io>
 NEXT_PUBLIC_TINA_BRANCH=<your content branch>
-NEXT_PUBLIC_ENABLE_THEME_SELECTION=<dispaly theme selector>
+NEXT_PUBLIC_ENABLE_THEME_SELECTION=<display theme selector>
+NEXT_PUBLIC_GTM_ID=<your Google Tag Manager container ID, e.g., GTM-XXXXXXX>
 ```
 
 **Theme Preview Mode:**

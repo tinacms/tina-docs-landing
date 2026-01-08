@@ -1,6 +1,7 @@
 import VideoDialog from "@/components/ui/VideoDialog";
 import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
 import { cn } from "@/lib/utils";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Metadata } from "next";
 import { Inter as FontSans, Lato, Nunito } from "next/font/google";
 import React from "react";
@@ -23,6 +24,9 @@ const lato = Lato({
   variable: "--font-lato",
   weight: "400",
 });
+
+const isDev = process.env.NODE_ENV === "development";
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   title: "Tina",
@@ -47,6 +51,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
+        {!isDev && gtmId && <GoogleTagManager gtmId={gtmId} />}
         <VideoDialogProvider>
           {children}
           <VideoDialog />

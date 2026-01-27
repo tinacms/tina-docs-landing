@@ -1,8 +1,7 @@
-import { fetchMeetingLinks } from "@/src/utils/get-meeting-links";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { FaChevronRight } from "react-icons/fa";
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { FaChevronRight } from 'react-icons/fa';
 
 interface MeetingPerson {
   name: string;
@@ -16,9 +15,16 @@ export const DemoForm = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const meetingPeopleData = await fetchMeetingLinks();
-      if (meetingPeopleData) {
-        setMeetingPeople(meetingPeopleData);
+      try {
+        const response = await fetch('/api/meeting-links');
+        if (response.ok) {
+          const { data } = await response.json();
+          if (data) {
+            setMeetingPeople(data);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching meeting links:', error);
       }
     };
 
@@ -26,41 +32,34 @@ export const DemoForm = () => {
   }, []);
 
   return (
-    <div className="py-10 h-full flex flex-col bg-background">
-      <div className="flex justify-center pb-8">
-        <h1 className="inline-block m-0 font-ibm-plex lg:text-3xl md:text-2xl lg:leading-tight  text-white">
-          Choose your location
-        </h1>
+    <div className='py-10 h-full flex flex-col bg-background'>
+      <div className='flex justify-center pb-8'>
+        <h1 className='inline-block m-0 font-ibm-plex lg:text-3xl md:text-2xl lg:leading-tight  text-white'>Choose your location</h1>
       </div>
-      <div className="grid lg:grid-cols-3 gap-3 px-6 md:px-0 lg:px-6 grow">
+      <div className='grid lg:grid-cols-3 gap-3 px-6 md:px-0 lg:px-6 grow'>
         {meetingPeople.map((person) => (
-          <div
-            key={person.name}
-            className="flex justify-center w-full items-center h-full"
-          >
-            <div className="w-full max-w-sm h-full">
+          <div key={person.name} className='flex justify-center w-full items-center h-full'>
+            <div className='w-full max-w-sm h-full'>
               <Link
                 href={person.url}
-                className="flex flex-col md:flex-row lg:flex-row w-full h-full items-center justify-between rounded-lg border border-input bg-background p-4 shadow transition transform duration-200 hover:scale-105 hover:bg-muted focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring text-white font-bold"
+                className='flex flex-col md:flex-row lg:flex-row w-full h-full items-center justify-between rounded-lg border border-input bg-background p-4 shadow transition transform duration-200 hover:scale-105 hover:bg-muted focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring text-white font-bold'
                 prefetch={false}
               >
                 {person.image && (
                   <Image
                     src={person.image}
                     alt={`${person.name} Portrait`}
-                    className="hidden md:block w-18 h-18 rounded-full lg:mr-4 md:mr-4"
+                    className='hidden md:block w-18 h-18 rounded-full lg:mr-4 md:mr-4'
                     width={72}
                     height={72}
                   />
                 )}
-                <div className="grow text-center md:text-left lg:text-left">
-                  <div className="font-medium text-lg">{person.name}</div>
-                  <div className="text-muted-foreground text-md">
-                    {person.description}
-                  </div>
+                <div className='grow text-center md:text-left lg:text-left'>
+                  <div className='font-medium text-lg'>{person.name}</div>
+                  <div className='text-muted-foreground text-md'>{person.description}</div>
                 </div>
-                <div className="shrink-0">
-                  <FaChevronRight className="h-6 w-6 text-muted-foreground" />
+                <div className='shrink-0'>
+                  <FaChevronRight className='h-6 w-6 text-muted-foreground' />
                 </div>
               </Link>
             </div>

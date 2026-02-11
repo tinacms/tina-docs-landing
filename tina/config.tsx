@@ -1,10 +1,9 @@
-import { defineConfig } from "tinacms";
-import nextConfig from '../next.config'
+import { defineConfig } from 'tinacms';
 
-import Global from "./collection/global";
-import Page from "./collection/page";
-import { DefaultSeo } from "./collection/default-seo";
-import { meetingLinksCollection } from "./collection/meetingLinks";
+import { DefaultSeo } from './collection/default-seo';
+import Global from './collection/global';
+import { meetingLinksCollection } from './collection/meetingLinks';
+import Page from './collection/page';
 
 const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
@@ -21,13 +20,14 @@ const config = defineConfig({
     // },
     // this is the config for the tina cloud media store
     tina: {
-      publicFolder: "public",
-      mediaRoot: "uploads",
+      publicFolder: 'public',
+      mediaRoot: 'uploads',
     },
   },
   build: {
-    publicFolder: "public", // The public asset folder for your framework
-    outputFolder: "admin", // within the public folder
+    publicFolder: 'public', // The public asset folder for your framework
+    outputFolder: 'admin', // within the public folder
+    basePath: process.env.TINA_BASE_PATH || '',
   },
   schema: {
     collections: [Page, Global, DefaultSeo as any, meetingLinksCollection],

@@ -1,24 +1,22 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX ?? "/tina-docs";
-const imagesPath = `${assetPrefix}/_next/image`;
-
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX || basePath || undefined;
 const nextConfig: NextConfig = {
   basePath,
   assetPrefix,
   images: {
-    path: imagesPath,
+    ...(assetPrefix && { path: `${assetPrefix}/_next/image` }),
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "assets.tina.io",
-        port: "",
+        protocol: 'https',
+        hostname: 'assets.tina.io',
+        port: '',
       },
       {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        port: "",
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
       },
     ],
   },
@@ -26,17 +24,17 @@ const nextConfig: NextConfig = {
     // these are also defined in the root layout since github pages doesn't support headers
     const headers = [
       {
-        key: "X-Frame-Options",
-        value: "SAMEORIGIN",
+        key: 'X-Frame-Options',
+        value: 'SAMEORIGIN',
       },
       {
-        key: "Content-Security-Policy",
+        key: 'Content-Security-Policy',
         value: "frame-ancestors 'self'",
       },
     ];
     return [
       {
-        source: "/(.*)",
+        source: '/(.*)',
         headers,
       },
     ];
@@ -44,8 +42,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/admin",
-        destination: "/admin/index.html",
+        source: '/admin',
+        destination: '/admin/index.html',
       },
     ];
   },

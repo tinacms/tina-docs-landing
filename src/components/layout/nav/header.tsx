@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useLayout } from "../layout-context";
 import { Menu, X } from "lucide-react";
 import { Button } from "../../ui/button";
@@ -14,6 +15,7 @@ import { DoubleItemDropDownButton } from "../../ui/doubleItemDropDownButton";
 
 const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
   const template = navObject.__typename;
+  const pathname = usePathname();
 
   switch (template) {
     case "GlobalHeaderNavObjectsDemoModal":
@@ -27,15 +29,19 @@ const NavigationObjectRenderer = ({ navObject }: { navObject: any }) => {
         </ModalButton>
       );
 
-    case "GlobalHeaderNavObjectsNavLink":
+    case "GlobalHeaderNavObjectsNavLink": {
+      const href = navObject.href || "#";
+      const isExternal = href.startsWith("http");
+      const isLinkActive = !isExternal && (pathname === href || (href !== "/" && pathname.startsWith(href + "/")));
       return (
         <Link
-          href={navObject.href || "#"}
-          className="text-neutral-text hover:text-accent-foreground block duration-150"
+          href={href}
+          className={`block duration-150 rounded-lg px-2.5 py-1 transition-colors ${isLinkActive ? "bg-accent text-accent-foreground" : "text-neutral-text hover:bg-accent/50 hover:text-accent-foreground"}`}
         >
           <span>{navObject.label}</span>
         </Link>
       );
+    }
 
     case "GlobalHeaderNavObjectsNavDropdown":
       return <DropdownButton label={navObject.label} links={navObject.links} />;

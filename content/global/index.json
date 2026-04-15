@@ -131,9 +131,6 @@
         "_template": "navDropdown"
       },
       {
-        "_template": "githubButton"
-      },
-      {
         "label": "Book a Demo",
         "variant": "outline",
         "_template": "demoModal"

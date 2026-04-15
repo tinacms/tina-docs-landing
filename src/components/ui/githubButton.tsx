@@ -11,7 +11,7 @@ const formatStarCount = (count: number) => {
 
 export const GitHubButton = () => {
   const [count, setCount] = useState(0);
-  
+
   useEffect(() => {
     const fetchStarCount = async () => {
       const count = await getGitHubStarCount('tinacms', 'tinacms');

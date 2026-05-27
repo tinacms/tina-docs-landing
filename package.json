@@ -12,6 +12,15 @@
     "lint": "biome lint",
     "dev:build": "next build"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "@tailwindcss/oxide",
+      "better-sqlite3",
+      "esbuild",
+      "sharp"
+    ]
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@svgr/webpack": "^8.1.0",

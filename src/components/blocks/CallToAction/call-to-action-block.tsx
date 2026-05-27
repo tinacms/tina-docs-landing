@@ -41,7 +41,7 @@ export const CallToActionBlock = ({ data }: { data: any }) => {
         )}
 
         {actions && actions.length > 0 && (
-          <div className="flex mb-5 gap-16 text-center justify-center max-w-5xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row mb-5 gap-8 md:gap-16 text-center justify-center max-w-5xl mx-auto px-4">
             {actions.map((action, index) => (
               <div
                 key={index}

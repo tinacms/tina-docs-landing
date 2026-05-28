@@ -26,7 +26,7 @@ export default async function Layout({ children, rawPageData }: LayoutProps) {
     <LayoutProvider globalSettings={globalData.global} pageData={rawPageData}>
       <CloudBanner />
       <Header />
-      <main className="overflow-x-hidden pt-20">
+      <main className="overflow-x-hidden">
         {children}
       </main>
       <Footer />

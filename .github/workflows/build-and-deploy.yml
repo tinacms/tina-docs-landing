@@ -58,11 +58,9 @@ jobs:
             exit 1
           fi
 
-      - name: Setup pnpm
+      - name: Enable Corepack
         if: steps.detect-package-manager.outputs.manager == 'pnpm'
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+        run: corepack enable
 
       - name: Setup Node
         uses: actions/setup-node@v4

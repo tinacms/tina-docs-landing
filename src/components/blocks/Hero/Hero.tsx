@@ -23,7 +23,7 @@ function InformationBlock({
   icon,
 }: {
   title: string;
-  description: TinaMarkdownContent;
+  description?: TinaMarkdownContent | null;
   icon?: string;
 }) {
   return (

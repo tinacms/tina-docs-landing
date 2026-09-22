@@ -18,6 +18,9 @@ export async function generateMetadata() {
 
   data.data.page.seo = {
     __typename: "PageSeo",
+    title: null,
+    description: null,
+    ogImage: null,
     canonicalUrl: `${siteUrl}/`,
   };
 
